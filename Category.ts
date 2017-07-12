@@ -1,9 +1,9 @@
 import { Semigroupoid } from './Semigroupoid';
 
 export type Category = Semigroupoid & {
-  constructor: AlternativeStatic;
+  constructor: AlternativeConstructor;
 }
 
-export type AlternativeStatic = {
+export type AlternativeConstructor = {
   id: () => Category;
 }

@@ -1,9 +1,9 @@
 import { Apply } from './Apply';
 
 export type Applicative<T> = Apply<T> & {
-  constructor: ApplicativeStatic;
+  constructor: ApplicativeConstructor;
 }
 
-export type ApplicativeStatic = {
+export type ApplicativeConstructor = {
   of: <T1>(a: T1) => Applicative<T1>;
 }

@@ -1,9 +1,9 @@
 import { Semigroup } from './Semigroup';
 
 export type Monoid = Semigroup & {
-  constructor: MonoidStatic;
+  constructor: MonoidConstructor;
 }
 
-export type MonoidStatic = {
+export type MonoidConstructor = {
   empty: () => Monoid;
 }
