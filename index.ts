@@ -1,4 +1,5 @@
 export * from './Alt';
+export * from './Alternative';
 export * from './Applicative';
 export * from './Apply';
 export * from './Category';
