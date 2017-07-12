@@ -1,9 +1,11 @@
 {
   "name": "fantasy-types",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Fantasy Land types definitions",
   "main": "index.ts",
-  "files": ["*.ts"],
+  "files": [
+    "*.ts"
+  ],
   "scripts": {
     "precommit": "lint-staged",
     "postversion": "git push && git push --tags && npm publish"
