@@ -5,6 +5,7 @@ export * from './Apply';
 export * from './Category';
 export * from './Chain';
 export * from './ChainRec';
+export * from './Comonad';
 export * from './Contravariant';
 export * from './Extend';
 export * from './Foldable';
