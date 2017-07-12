@@ -4,6 +4,7 @@ export * from './Applicative';
 export * from './Apply';
 export * from './Category';
 export * from './Chain';
+export * from './ChainRec';
 export * from './Contravariant';
 export * from './Foldable';
 export * from './Functor';
