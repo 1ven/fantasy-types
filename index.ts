@@ -11,6 +11,7 @@ export * from "./Contravariant";
 export * from "./Extend";
 export * from "./Foldable";
 export * from "./Functor";
+export * from "./Monad";
 export * from "./Monoid";
 export * from "./Ord";
 export * from "./Plus";
