@@ -2,6 +2,7 @@ export * from './Alt';
 export * from './Alternative';
 export * from './Applicative';
 export * from './Apply';
+export * from './Bifunctor';
 export * from './Category';
 export * from './Chain';
 export * from './ChainRec';
