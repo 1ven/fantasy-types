@@ -1,5 +1,5 @@
-import { Extend } from './Extend';
+import { Extend } from "./Extend";
 
 export type Comonad<T> = Extend<T> & {
   extract: () => T;
-}
+};
