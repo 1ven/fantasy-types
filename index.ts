@@ -1,3 +1,4 @@
+export * from './Apply';
 export * from './Category';
 export * from './Contravariant';
 export * from './Functor';
