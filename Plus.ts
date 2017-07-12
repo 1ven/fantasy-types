@@ -1,7 +1,9 @@
 import { Alt } from './Alt';
 
 export type Plus<T> = Alt<T> & {
-  constructor: {
-    zero: () => Plus<never>;
-  }
+  constructor: OrdStatic;
+}
+
+export type OrdStatic = {
+  zero: () => Plus<never>;
 }
