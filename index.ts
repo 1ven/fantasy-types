@@ -1,3 +1,5 @@
+export * from './Alt';
+export * from './Applicative';
 export * from './Apply';
 export * from './Category';
 export * from './Contravariant';
