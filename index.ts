@@ -3,6 +3,7 @@ export * from './Alternative';
 export * from './Applicative';
 export * from './Apply';
 export * from './Category';
+export * from './Chain';
 export * from './Contravariant';
 export * from './Foldable';
 export * from './Functor';
