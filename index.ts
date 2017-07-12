@@ -6,6 +6,7 @@ export * from './Category';
 export * from './Chain';
 export * from './ChainRec';
 export * from './Contravariant';
+export * from './Extend';
 export * from './Foldable';
 export * from './Functor';
 export * from './Monoid';
