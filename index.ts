@@ -12,3 +12,4 @@ export * from './Plus';
 export * from './Semigroup';
 export * from './Semigroupoid';
 export * from './Setoid';
+export * from './Traversable';
