@@ -1,3 +1,3 @@
 export type Semigroupoid = {
-  compose: <T>(a: Semigroupoid) => T;
+  compose: (a: Semigroupoid) => Semigroupoid;
 }
