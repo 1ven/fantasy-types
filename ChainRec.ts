@@ -1,7 +1,8 @@
 import { Chain } from "./Chain";
 
-export interface ChainRec<T> extends Chain<T> {
-  new (a: T): ChainRec<T>;
+export interface ChainRec<T> extends Chain<T> {}
+
+export interface ChainRecConstructor {
   chainRec: <T1, T2, T3>(
     f: (
       next: (a: T1) => T2,
