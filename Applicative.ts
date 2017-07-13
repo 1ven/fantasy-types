@@ -1,9 +1,6 @@
 import { Apply } from "./Apply";
 
-export type Applicative<T> = Apply<T> & {
-  constructor: ApplicativeConstructor;
-};
-
-export type ApplicativeConstructor = {
+export interface Applicative<T> extends Apply<T> {
+  new (a: T): Applicative<T>;
   of: <T1>(a: T1) => Applicative<T1>;
-};
+}

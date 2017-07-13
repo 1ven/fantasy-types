@@ -1,9 +1,6 @@
 import { Alt } from "./Alt";
 
-export type Plus<T> = Alt<T> & {
-  constructor: OrdConstructor;
-};
-
-export type OrdConstructor = {
+export interface Plus<T> {
+  new (a: T): Plus<T>;
   zero: () => Plus<never>;
-};
+}

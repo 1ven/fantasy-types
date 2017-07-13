@@ -1,9 +1,6 @@
 import { Semigroupoid } from "./Semigroupoid";
 
-export type Category = Semigroupoid & {
-  constructor: AlternativeConstructor;
-};
-
-export type AlternativeConstructor = {
+export interface Category extends Semigroupoid {
+  new (): Category;
   id: () => Category;
-};
+}

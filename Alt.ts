@@ -1,5 +1,5 @@
 import { Functor } from "./Functor";
 
-export type Alt<T> = Functor<T> & {
+export interface Alt<T> extends Functor<T> {
   alt: <T1>(a: Alt<T1>) => Alt<T | T1>;
-};
+}

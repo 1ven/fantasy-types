@@ -1,9 +1,6 @@
 import { Semigroup } from "./Semigroup";
 
-export type Monoid = Semigroup & {
-  constructor: MonoidConstructor;
-};
-
-export type MonoidConstructor = {
+export interface Monoid extends Semigroup {
+  new (): Monoid;
   empty: () => Monoid;
-};
+}

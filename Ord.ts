@@ -1,5 +1,5 @@
 import { Setoid } from "./Setoid";
 
-export type Ord = Setoid & {
+export interface Ord extends Setoid {
   lte: (a: Ord) => boolean;
-};
+}

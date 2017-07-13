@@ -1,10 +1,7 @@
 import { Chain } from "./Chain";
 
-export type ChainRec<T> = Chain<T> & {
-  constructor: ChainRecConstructor;
-};
-
-export type ChainRecConstructor = {
+export interface ChainRec<T> extends Chain<T> {
+  new (a: T): ChainRec<T>;
   chainRec: <T1, T2, T3>(
     f: (
       next: (a: T1) => T2,
@@ -13,4 +10,4 @@ export type ChainRecConstructor = {
     ) => ChainRec<T2 | T3>,
     i: T1
   ) => ChainRec<T3>;
-};
+}

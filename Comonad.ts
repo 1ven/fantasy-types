@@ -1,5 +1,5 @@
 import { Extend } from "./Extend";
 
-export type Comonad<T> = Extend<T> & {
+export interface Comonad<T> extends Extend<T> {
   extract: () => T;
-};
+}

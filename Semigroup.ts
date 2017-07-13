@@ -1,3 +1,3 @@
-export type Semigroup = {
+export interface Semigroup {
   concat: (a: Semigroup) => Semigroup;
-};
+}
