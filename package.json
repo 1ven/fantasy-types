@@ -1,6 +1,6 @@
 {
   "name": "fantasy-types",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Fantasy Land types definitions",
   "main": "index.ts",
   "files": [
