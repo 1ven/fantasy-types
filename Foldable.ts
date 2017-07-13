@@ -1,3 +1,3 @@
 export interface Foldable<T> {
-  reduce: <T1>(fn: (acc: T1, value: T) => T1, initial: T1) => Foldable<T1>;
+  reduce: <T1>(fn: (acc: T1, value: T) => T1, initial: T1) => T1;
 }
