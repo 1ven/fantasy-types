@@ -1,10 +1,10 @@
 import { Functor } from "./Functor";
 import { Foldable } from "./Foldable";
-import { ApplicativeConstructor } from "./Applicative";
+import { Applicative, ApplicativeConstructor } from "./Applicative";
 
 export interface Traversable<T> extends Functor<T>, Foldable<T> {
-  traverse: (
+  traverse: <T1>(
     A: ApplicativeConstructor,
-    f: (a: T) => Traversable<T>
+    f: (a: T) => Applicative<T1>
   ) => Traversable<T>;
 }
