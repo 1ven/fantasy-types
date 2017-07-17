@@ -6,5 +6,5 @@ export interface Traversable<T> extends Functor<T>, Foldable<T> {
   traverse: <T1>(
     A: ApplicativeConstructor,
     f: (a: T) => Applicative<T1>
-  ) => Traversable<T>;
+  ) => Applicative<T1 | Traversable<T>>;
 }
