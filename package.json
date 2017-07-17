@@ -1,6 +1,6 @@
 {
   "name": "icecrown",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Fantasy Land types definitions",
   "main": "index.ts",
   "files": [
