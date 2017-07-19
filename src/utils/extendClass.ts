@@ -1,4 +1,10 @@
-// Warning: ES6 only
+/**
+ * Warning: ES6 only.
+ * Used to extend class by given spec object.
+ * 
+ * @param Origin Original constructor.
+ * @param child Spec object.
+ */
 export default function<T, T1>(Origin, child) {
   const Class = <any>class extends Origin {};
 

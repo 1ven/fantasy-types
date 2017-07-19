@@ -99,7 +99,7 @@ export const extended = {
         true
       );
     },
-    ap: function<T, T1>(other: ArrayExtended<(x: T) => T1>) {
+    ap: function<T, T1>(other: Array<(x: T) => T1>) {
       const Ctor = this.constructor;
       return Z.reduce(
         (acc: T1[], val: (x: T) => T1) =>
@@ -118,7 +118,7 @@ export const extended = {
     chain: function<T, T1>(f: (a: T) => Array<T1>) {
       return Z.reduce(
         (acc: Array<T1>, val: T) => Z.concat(f(val), acc),
-        [],
+        new this.constructor(),
         this
       );
     },
