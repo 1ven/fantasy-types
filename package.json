@@ -50,12 +50,7 @@
       "ts",
       "tsx",
       "js"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "tsconfig.test.json"
-      }
-    }
+    ]
   },
   "dependencies": {
     "sanctuary-type-classes": "^6.0.0"
