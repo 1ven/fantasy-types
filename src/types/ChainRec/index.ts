@@ -14,7 +14,7 @@ export interface ChainRecConstructor {
   ) => ChainRec<T3>;
 }
 
-export const empty = <T1, T2, T3>(
+export const chainRec = <T1, T2, T3>(
   C: ChainRecConstructor,
   f: (next: (a: T1) => T2, done: (a: T1) => T3, value: T1) => ChainRec<T2 | T3>,
   i: T1
