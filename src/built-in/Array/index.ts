@@ -1,4 +1,5 @@
 import * as F from "../../types";
+import { Setoid, Applicative, ApplicativeConstructor } from "../../types";
 import * as Z from "sanctuary-type-classes";
 import { extendClass } from "../../utils";
 
@@ -67,7 +68,7 @@ export const extended = {
     extend: function<T, T1>(f: (a: Array<T>) => T1) {
       return Array.prototype.map.call(this, (_, i: number) => f(this.slice(i)));
     },
-    equals: function<T extends F.Setoid>(other: Array<T>) {
+    equals: function<T extends Setoid>(other: Array<T>) {
       if (this.length !== other.length) {
         return false;
       }
@@ -123,8 +124,8 @@ export const extended = {
       );
     },
     traverse: function<T, T1>(
-      A: F.ApplicativeConstructor,
-      f: (a: T) => F.Applicative<T1>
+      A: ApplicativeConstructor,
+      f: (a: T) => Applicative<T1>
     ) {
       // TODO: provide implementation
     }
