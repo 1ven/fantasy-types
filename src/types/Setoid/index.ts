@@ -1,5 +1,6 @@
 import * as array from "../../built-in/Array";
 import * as boolean from "../../built-in/Boolean";
+import * as date from "../../built-in/Date";
 
 export interface Setoid {
   // TODO: how to reflect, that `a` should be Setoid of the same type?
@@ -13,6 +14,10 @@ export const equals = function<T extends Setoid>(a: typeof b, b: T) {
 
   if (boolean.is(b)) {
     return boolean.extended.prototype.equals.apply(b, [a]);
+  }
+
+  if (date.is(b)) {
+    return date.extended.prototype.equals.apply(b, [a]);
   }
 
   return b.equals(a);
