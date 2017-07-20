@@ -10,7 +10,8 @@ export interface Constructor {
 
 export interface BooleanExtended extends F.Setoid, F.Ord {}
 
-export const is = <T>(val: any): val is Boolean => typeof val === "boolean";
+export const is = <T>(val: any): val is Boolean =>
+  typeof val === "boolean" || val instanceof Boolean;
 export const isConstructor = (Ctor: any): Ctor is BooleanConstructor =>
   Ctor === Boolean;
 
