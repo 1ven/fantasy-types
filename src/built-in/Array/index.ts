@@ -1,5 +1,12 @@
 import * as F from "../../types";
-import { Setoid, Applicative, ApplicativeConstructor } from "../../types";
+import {
+  Setoid,
+  Applicative,
+  ApplicativeConstructor,
+  of,
+  map,
+  ap
+} from "../../types";
 import * as Z from "sanctuary-type-classes";
 import { extendClass } from "../../utils";
 
@@ -153,15 +160,17 @@ export const extended = {
       type A = Applicative<T1>;
       type L = Array<A>;
 
-      const list = Array.prototype.map.apply(this, [f]);
+      const list = map(f, this);
       var idx = list.length - 1;
       var acc = A.of(new this.constructor());
 
       while (idx >= 0) {
-        acc = acc.ap(
-          list[idx].map((el: A) => (list: L) =>
-            new this.constructor(...[el, ...list])
-          )
+        acc = ap(
+          map(
+            (el: A) => (list: L) => new this.constructor(...[el, ...list]),
+            list[idx]
+          ),
+          acc
         );
         idx -= 1;
       }
