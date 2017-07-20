@@ -56,9 +56,9 @@ export const extended = {
       return { value: x, done: true };
     }
 
-    var todo = [i];
-    var res = [];
-    var xs;
+    let todo = [i];
+    let res = [];
+    let xs;
 
     while (todo.length > 0) {
       xs = f(stepNext, stepDone, todo.shift());
@@ -100,7 +100,7 @@ export const extended = {
         return true;
       }
 
-      for (var idx = 0; idx < this.length; idx += 1) {
+      for (let idx = 0; idx < this.length; idx += 1) {
         if (!Z.equals(this[idx], other[idx])) {
           return false;
         }
@@ -109,7 +109,7 @@ export const extended = {
       return true;
     },
     lte: function<T>(other: Array<T>) {
-      var idx = 0;
+      let idx = 0;
       while (true) {
         if (idx === this.length) {
           return true;
@@ -127,10 +127,10 @@ export const extended = {
       }
     },
     ap: function<T, T1>(fs: Array<(x: T) => T1>) {
-      var result = new this.constructor();
+      let result = new this.constructor();
 
-      for (var idx = 0; idx < fs.length; idx += 1) {
-        for (var idx2 = 0; idx2 < this.length; idx2 += 1) {
+      for (let idx = 0; idx < fs.length; idx += 1) {
+        for (let idx2 = 0; idx2 < this.length; idx2 += 1) {
           result.push(fs[idx](this[idx2]));
         }
       }
@@ -138,9 +138,9 @@ export const extended = {
       return result;
     },
     chain: function<T, T1>(f: (a: T) => Array<T1>) {
-      var result = new this.constructor();
+      let result = new this.constructor();
 
-      for (var v of this) {
+      for (let v of this) {
         Array.prototype.push.apply(result, f(v));
       }
 
@@ -154,8 +154,8 @@ export const extended = {
       type L = Array<A>;
 
       const list = F.map(f, this);
-      var acc = F.of(A, new this.constructor());
-      var idx = list.length - 1;
+      let acc = F.of(A, new this.constructor());
+      let idx = list.length - 1;
 
       while (idx >= 0) {
         acc = F.ap(
