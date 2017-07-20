@@ -2,6 +2,7 @@ import * as array from "../../built-in/Array";
 import * as boolean from "../../built-in/Boolean";
 import * as date from "../../built-in/Boolean";
 import * as number from "../../built-in/Number";
+import * as string from "../../built-in/String";
 import { Setoid } from "../Setoid";
 
 export interface Ord extends Setoid {
@@ -25,6 +26,10 @@ export const lte = function<T extends Ord>(a: typeof b, b: T) {
 
   if (number.is(b)) {
     return apply(number);
+  }
+
+  if (string.is(b)) {
+    return apply(string);
   }
 
   return b.lte(a);

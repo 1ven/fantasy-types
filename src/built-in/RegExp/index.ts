@@ -4,7 +4,7 @@ import { extendClass } from "../../utils";
 import equals from "./equals";
 
 export interface Constructor {
-  new (val: any): RegExpExtended;
+  new <T>(val: T): RegExpExtended;
 }
 
 export interface RegExpExtended extends F.Setoid {}

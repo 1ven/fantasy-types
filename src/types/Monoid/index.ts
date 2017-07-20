@@ -1,4 +1,5 @@
 import * as array from "../../built-in/Array";
+import * as string from "../../built-in/String";
 import { Semigroup } from "../Semigroup";
 
 export interface Monoid extends Semigroup {}
@@ -13,6 +14,10 @@ export const empty = function(M: MonoidConstructor) {
 
   if (array.isConstructor(M)) {
     return apply(array);
+  }
+
+  if (string.isConstructor(M)) {
+    return apply(string);
   }
 
   return M.empty();

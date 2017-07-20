@@ -1,4 +1,5 @@
 import * as array from "../../built-in/Array";
+import * as string from "../../built-in/String";
 
 export interface Semigroup {
   concat: (a: Semigroup) => Semigroup;
@@ -10,6 +11,10 @@ export const concat = function<T extends Semigroup>(a: typeof b, b: T) {
 
   if (array.is(b)) {
     return apply(array);
+  }
+
+  if (string.is(b)) {
+    return apply(string);
   }
 
   return b.concat(a);
