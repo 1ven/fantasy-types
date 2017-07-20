@@ -9,7 +9,7 @@ export interface Constructor {
 
 export interface ErrorExtended extends F.Setoid {}
 
-export const is = <T>(val: any): val is Date => val instanceof Error;
+export const is = <T>(val: any): val is Error => val instanceof Error;
 export const isConstructor = (Ctor: any): Ctor is ErrorConstructor =>
   Ctor === Error;
 

@@ -3,6 +3,7 @@ import * as boolean from "../../built-in/Boolean";
 import * as date from "../../built-in/Date";
 import * as error from "../../built-in/Error";
 import * as number from "../../built-in/Number";
+import * as regexp from "../../built-in/RegExp";
 
 export interface Setoid {
   // TODO: how to reflect, that `a` should be Setoid of the same type?
@@ -30,6 +31,10 @@ export const equals = function<T extends Setoid>(a: typeof b, b: T) {
 
   if (number.is(b)) {
     return apply(number);
+  }
+
+  if (regexp.is(b)) {
+    return apply(regexp);
   }
 
   return b.equals(a);
