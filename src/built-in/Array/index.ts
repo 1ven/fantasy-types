@@ -100,51 +100,51 @@ export const extended = {
         return true;
       }
 
-      return Array.prototype.reduce.call(
-        this,
-        (acc: boolean, value: T, i: number) =>
-          Z.equals(value, other[i]) ? acc : false,
-        true
-      );
+      for (var idx = 0; idx < this.length; idx += 1) {
+        if (!Z.equals(this[idx], other[idx])) {
+          return false;
+        }
+      }
+
+      return true;
     },
     lte: function<T>(other: Array<T>) {
-      if (this.length < other.length) {
-        return true;
-      }
+      var idx = 0;
+      while (true) {
+        if (idx === this.length) {
+          return true;
+        }
 
-      if (this.length > other.length) {
-        return false;
-      }
+        if (idx === other.length) {
+          return false;
+        }
 
-      return Array.prototype.reduce.call(
-        this,
-        (acc: boolean, value: T, i: number) =>
-          Z.lte(other[i], value) ? acc : false,
-        true
-      );
+        if (!Z.equals(this[idx], other[idx])) {
+          return Z.lte(this[idx], other[idx]);
+        }
+
+        idx += 1;
+      }
     },
-    ap: function<T, T1>(other: Array<(x: T) => T1>) {
-      const Ctor = this.constructor;
-      return Z.reduce(
-        (acc: T1[], val: (x: T) => T1) =>
-          new Ctor(
-            ...acc,
-            ...Z.reduce(
-              (acc2: T1[], val2: T) => new Ctor(...acc2, val(val2)),
-              new Ctor(),
-              this
-            )
-          ),
-        new Ctor(),
-        other
-      );
+    ap: function<T, T1>(fs: Array<(x: T) => T1>) {
+      var result = new this.constructor();
+
+      for (var idx = 0; idx < fs.length; idx += 1) {
+        for (var idx2 = 0; idx2 < this.length; idx2 += 1) {
+          result.push(fs[idx](this[idx2]));
+        }
+      }
+
+      return result;
     },
     chain: function<T, T1>(f: (a: T) => Array<T1>) {
-      return Z.reduce(
-        (acc: Array<T1>, val: T) => Z.concat(f(val), acc),
-        new this.constructor(),
-        this
-      );
+      var result = new this.constructor();
+
+      for (var v of this) {
+        Array.prototype.push.apply(result, f(v));
+      }
+
+      return result;
     },
     traverse: function<T, T1>(
       A: ApplicativeConstructor,
