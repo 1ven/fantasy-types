@@ -9,8 +9,10 @@ export interface PlusConstructor {
 }
 
 export const zero = function(P: PlusConstructor) {
+  const apply = obj => obj.extended.zero.apply(P);
+
   if (array.isConstructor(P)) {
-    return array.extended.zero.apply(P);
+    return apply(array);
   }
 
   return P.zero();

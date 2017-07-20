@@ -26,11 +26,27 @@ export interface ChainRecConstructor {
 
 export const chainRec = <T1, T2, T3>(
   C: ChainRecConstructor,
-  f: (next: (a: T1) => T2, done: (a: T1) => T3, value: T1) => ChainRec<T2 | T3>,
+  f: (
+    next: (
+      a: T1
+    ) => {
+      value: T2;
+      done: boolean;
+    },
+    done: (
+      a: T1
+    ) => {
+      value: T3;
+      done: boolean;
+    },
+    value: T1
+  ) => ChainRec<T2 | T3>,
   i: T1
 ) => {
+  const apply = obj => obj.extended.chainRec.apply(C, [f, i]);
+
   if (array.isConstructor(C)) {
-    return array.extended.chainRec.apply(C, [f, i]);
+    return apply(array);
   }
 
   return C.chainRec(f, i);

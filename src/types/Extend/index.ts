@@ -6,8 +6,10 @@ export interface Extend<T> extends Functor<T> {
 }
 
 export const extend = function<T, T1>(f: (a: Extend<T>) => T1, b: Extend<T>) {
+  const apply = obj => obj.extended.prototype.extend.apply(b, [f]);
+
   if (array.is(b)) {
-    return array.extended.prototype.extend.apply(b, [f]);
+    return apply(array);
   }
 
   return b.extend(f);

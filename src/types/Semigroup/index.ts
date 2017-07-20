@@ -6,8 +6,10 @@ export interface Semigroup {
 }
 
 export const concat = function<T extends Semigroup>(a: typeof b, b: T) {
+  const apply = obj => obj.extended.prototype.concat.apply(b, [a]);
+
   if (array.is(b)) {
-    return array.extended.prototype.concat.apply(b, [a]);
+    return apply(array);
   }
 
   return b.concat(a);

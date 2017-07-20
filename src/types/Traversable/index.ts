@@ -15,8 +15,10 @@ export const traverse = function<T, T1>(
   f: (a: T) => Applicative<T1>,
   a: Traversable<T>
 ) {
+  const apply = obj => obj.extended.prototype.traverse.apply(a, [A, f]);
+
   if (array.is(a)) {
-    return array.extended.prototype.traverse.apply(a, [A, f]);
+    return apply(array);
   }
 
   return a.traverse(A, f);

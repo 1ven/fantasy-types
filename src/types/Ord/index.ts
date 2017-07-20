@@ -8,16 +8,18 @@ export interface Ord extends Setoid {
 }
 
 export const lte = function<T extends Ord>(a: typeof b, b: T) {
+  const apply = obj => obj.extended.prototype.lte.apply(b, [a]);
+
   if (array.is(b)) {
-    return array.extended.prototype.lte.apply(b, [a]);
+    return apply(array);
   }
 
   if (boolean.is(b)) {
-    return boolean.extended.prototype.lte.apply(b, [a]);
+    return apply(boolean);
   }
 
   if (date.is(b)) {
-    return date.extended.prototype.lte.apply(b, [a]);
+    return apply(date);
   }
 
   return b.lte(a);

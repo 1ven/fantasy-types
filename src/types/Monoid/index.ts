@@ -9,8 +9,10 @@ export interface MonoidConstructor {
 }
 
 export const empty = function(M: MonoidConstructor) {
+  const apply = obj => obj.extended.empty.apply(M);
+
   if (array.isConstructor(M)) {
-    return array.extended.empty.apply(M);
+    return apply(array);
   }
 
   return M.empty();

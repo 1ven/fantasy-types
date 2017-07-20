@@ -7,8 +7,10 @@ export interface Alt<T> extends Functor<T> {
 }
 
 export const alt = function<T, T1 extends Alt<T>>(a: typeof b, b: T1) {
+  const apply = obj => obj.extended.prototype.alt.apply(b, [a]);
+
   if (array.is(b)) {
-    return array.extended.prototype.alt.apply(b, [a]);
+    return apply(array);
   }
 
   return b.alt(a);

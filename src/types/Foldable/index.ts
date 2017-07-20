@@ -9,8 +9,10 @@ export const reduce = function<T, T1>(
   initial: T1,
   a: Foldable<T>
 ) {
+  const apply = obj => obj.extended.prototype.reduce.apply(a, [f, initial]);
+
   if (array.is(a)) {
-    return array.extended.prototype.reduce.apply(a, [f, initial]);
+    return apply(array);
   }
 
   return a.reduce(f, initial);

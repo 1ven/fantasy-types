@@ -5,8 +5,10 @@ export interface Functor<T> {
 }
 
 export const map = function<T, T1>(f: (x: T) => T1, a: Functor<T>) {
+  const apply = obj => obj.extended.prototype.map.apply(a, [f]);
+
   if (array.is(a)) {
-    return array.extended.prototype.map.apply(a, [f]);
+    return apply(array);
   }
 
   return a.map(f);
