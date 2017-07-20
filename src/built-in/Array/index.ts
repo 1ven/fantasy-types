@@ -161,8 +161,8 @@ export const extended = {
       type L = Array<A>;
 
       const list = map(f, this);
+      var acc = of(A, new this.constructor());
       var idx = list.length - 1;
-      var acc = A.of(new this.constructor());
 
       while (idx >= 0) {
         acc = ap(
