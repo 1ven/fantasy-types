@@ -42,11 +42,34 @@ export const extended = {
     return new this(value);
   },
   chainRec: <T1, T2, T3>(
-    f: (next: (a: T1) => T2, done: (a: T1) => T3, value: T1) => Array<T2 | T3>,
-    val: T1
+    f: (
+      next: (a: T1) => { value: T2; done: boolean },
+      done: (a: T1) => { value: T3; done: boolean },
+      i: T1
+    ) => Array<T2 | T3>,
+    i: T1
   ) => {
-    // TODO: provide implementation
-    return Z.chainRec(Array, f, val);
+    function stepNext(x) {
+      return { value: x, done: false };
+    }
+    function stepDone(x) {
+      return { value: x, done: true };
+    }
+
+    var todo = [i];
+    var res = [];
+    var xs;
+
+    while (todo.length > 0) {
+      xs = f(stepNext, stepDone, todo.shift());
+      let buffer = [];
+      for (let idx = 0; idx < xs.length; idx += 1) {
+        (xs[idx].done ? res : buffer).push(xs[idx].value);
+      }
+      Array.prototype.unshift.apply(todo, buffer);
+    }
+
+    return res;
   },
   prototype: {
     concat: function<T, T1>(other: Array<T>) {
@@ -127,7 +150,23 @@ export const extended = {
       A: ApplicativeConstructor,
       f: (a: T) => Applicative<T1>
     ) {
-      // TODO: provide implementation
+      type A = Applicative<T1>;
+      type L = Array<A>;
+
+      const list = Array.prototype.map.apply(this, [f]);
+      var idx = list.length - 1;
+      var acc = A.of(new this.constructor());
+
+      while (idx >= 0) {
+        acc = acc.ap(
+          list[idx].map((el: A) => (list: L) =>
+            new this.constructor(...[el, ...list])
+          )
+        );
+        idx -= 1;
+      }
+
+      return acc;
     }
   }
 };

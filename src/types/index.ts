@@ -26,6 +26,7 @@ import * as Alternative from "./Alternative/laws";
 import * as Applicative from "./Applicative/laws";
 import * as Apply from "./Apply/laws";
 import * as Chain from "./Chain/laws";
+import * as ChainRec from "./ChainRec/laws";
 import * as Extend from "./Extend/laws";
 import * as Foldable from "./Foldable/laws";
 import * as Functor from "./Functor/laws";
@@ -43,6 +44,7 @@ export const laws = {
   Applicative,
   Apply,
   Chain,
+  ChainRec,
   Extend,
   Foldable,
   Functor,

@@ -128,20 +128,20 @@ test("conforms Foldable associativity", () => {
 test("conforms Traversable naturality", () => {
   laws.Traversable.naturality(
     ArrayExtended,
-    Array as any,
-    new ArrayExtended(new ArrayExtended(5)),
+    ArrayExtended,
+    new ArrayExtended(new ArrayExtended("a")),
     x => [x]
   );
 });
 
 test("conforms Traversable identity", () => {
-  laws.Traversable.identity(Array as any, new ArrayExtended("u"));
+  laws.Traversable.identity(ArrayExtended, new ArrayExtended("u"));
 });
 
 test("conforms Traversable composition", () => {
   laws.Traversable.composition(
     ArrayExtended,
-    Array as any,
+    ArrayExtended,
     new ArrayExtended(new ArrayExtended(new ArrayExtended("u")))
   );
 });
@@ -171,5 +171,15 @@ test("conforms Extend associativity", () => {
     new ArrayExtended("w"),
     x => new ArrayExtended("g"),
     x => new ArrayExtended(new ArrayExtended("f"))
+  );
+});
+
+test("conforms ChainRec equivalence", () => {
+  laws.ChainRec.equivalence(
+    ArrayExtended,
+    (s: string) => s.length < 2,
+    (s: string) => [s + "!"],
+    (s: string) => [s + "?"],
+    ""
   );
 });
