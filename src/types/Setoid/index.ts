@@ -5,14 +5,29 @@ import * as error from "../../built-in/Error";
 import * as number from "../../built-in/Number";
 import * as regexp from "../../built-in/RegExp";
 import * as string from "../../built-in/String";
+import * as object from "../../built-in/Object";
+import { PlainObject } from "../../built-in/Object";
 
 export interface Setoid {
-  // TODO: how to reflect, that `a` should be Setoid of the same type?
-  equals: (a: Setoid) => boolean;
+  equals: <T extends Setoid>(this: typeof a, a: T) => boolean;
 }
 
-export const equals = function<T extends Setoid>(a: typeof b, b: T) {
-  const apply = obj => obj.extended.prototype.equals.apply(b, [a]);
+export function equals<T, T1>(a: PlainObject<T>, b: PlainObject<T1>): boolean;
+export function equals<T>(a: typeof b, b: Array<T>): boolean;
+export function equals(a: typeof b, b: Boolean): boolean;
+export function equals(a: typeof b, b: Date): boolean;
+export function equals(a: typeof b, b: Error): boolean;
+export function equals(a: typeof b, b: Number): boolean;
+export function equals(a: typeof b, b: RegExp): boolean;
+export function equals(a: typeof b, b: String): boolean;
+export function equals<T extends Setoid>(a: typeof b, b: T): boolean;
+
+export function equals(a, b) {
+  const apply = obj => obj.extended.prototype.equals.apply(b, [a]) as boolean;
+
+  if (object.is(b)) {
+    return apply(object);
+  }
 
   if (array.is(b)) {
     return apply(array);
@@ -43,4 +58,4 @@ export const equals = function<T extends Setoid>(a: typeof b, b: T) {
   }
 
   return b.equals(a);
-};
+}

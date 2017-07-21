@@ -8,10 +8,15 @@ export interface ApplicativeConstructor {
   of: <T1>(a: T1) => Applicative<T1>;
 }
 
-export const of = function<T>(A: ApplicativeConstructor, a: T) {
+export function of<T>(A: ArrayConstructor, a: T): Array<T>;
+export function of<T>(A: ApplicativeConstructor, a: T): Applicative<T>;
+
+export function of<T>(A, a) {
+  const apply = obj => obj.extended.of.apply(A, [a]);
+
   if (array.isConstructor(A)) {
-    return array.extended.of.apply(A, [a]);
+    return apply(array);
   }
 
   return A.of(a);
-};
+}
