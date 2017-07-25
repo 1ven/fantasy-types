@@ -6,7 +6,13 @@
  * @param child Spec object.
  */
 export default function<T, T1>(Origin, child) {
-  const Class = <any>class extends Origin {};
+  /**
+   * Hack, for proper displaying class name in console.
+   */
+  const obj = {
+    [Origin.name]: <any>class extends Origin {}
+  };
+  const Class = obj[Origin.name];
 
   for (let key in child) {
     if (key === "prototype") {
