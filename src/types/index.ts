@@ -25,8 +25,10 @@ import * as Alt from "./Alt/laws";
 import * as Alternative from "./Alternative/laws";
 import * as Applicative from "./Applicative/laws";
 import * as Apply from "./Apply/laws";
+import * as Category from "./Category/laws";
 import * as Chain from "./Chain/laws";
 import * as ChainRec from "./ChainRec/laws";
+import * as Contravariant from "./Contravariant/laws";
 import * as Extend from "./Extend/laws";
 import * as Foldable from "./Foldable/laws";
 import * as Functor from "./Functor/laws";
@@ -34,7 +36,9 @@ import * as Monad from "./Monad/laws";
 import * as Monoid from "./Monoid/laws";
 import * as Ord from "./Ord/laws";
 import * as Plus from "./Plus/laws";
+import * as Profunctor from "./Profunctor/laws";
 import * as Semigroup from "./Semigroup/laws";
+import * as Semigroupoid from "./Semigroupoid/laws";
 import * as Setoid from "./Setoid/laws";
 import * as Traversable from "./Traversable/laws";
 
@@ -43,8 +47,10 @@ export const laws = {
   Alternative,
   Applicative,
   Apply,
+  Category,
   Chain,
   ChainRec,
+  Contravariant,
   Extend,
   Foldable,
   Functor,
@@ -52,7 +58,9 @@ export const laws = {
   Monoid,
   Ord,
   Plus,
+  Profunctor,
   Semigroup,
+  Semigroupoid,
   Setoid,
   Traversable
 };
