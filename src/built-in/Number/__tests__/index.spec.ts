@@ -1,34 +1,25 @@
-import NumberExtended from "../";
 import { laws } from "../../../types";
 
 test("conforms Setoid reflexivity", () => {
-  laws.Setoid.reflexivity(new NumberExtended(1));
+  laws.Setoid.reflexivity(1);
 });
 
 test("conforms Setoid symmetry", () => {
-  laws.Setoid.symmetry(new NumberExtended(1), new NumberExtended(2));
+  laws.Setoid.symmetry(1, 2);
 });
 
 test("conforms Setoid transitivity", () => {
-  laws.Setoid.transitivity(
-    new NumberExtended(1),
-    new NumberExtended(1),
-    new NumberExtended(1)
-  );
+  laws.Setoid.transitivity(1, 1, 1);
 });
 
 test("conforms Ord totality", () => {
-  laws.Ord.totality(new NumberExtended(1), new NumberExtended(2));
+  laws.Ord.totality(1, 2);
 });
 
 test("conforms Ord antisymmetry", () => {
-  laws.Ord.antisymmetry(new NumberExtended(1), new NumberExtended(1));
+  laws.Ord.antisymmetry(1, 1);
 });
 
 test("conforms Ord transitivity", () => {
-  laws.Ord.transitivity(
-    new NumberExtended(1),
-    new NumberExtended(2),
-    new NumberExtended(3)
-  );
+  laws.Ord.transitivity(1, 2, 3);
 });
