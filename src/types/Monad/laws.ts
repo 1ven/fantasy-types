@@ -1,13 +1,9 @@
-import { Monad, MonadConstructor } from "./";
+import { of, chain } from "../../";
 
-export const leftIdentity = <T>(
-  M: MonadConstructor,
-  a: T,
-  f: (a: T) => Monad<T>
-) => {
-  expect(M.of(a).chain(f)).toEqual(f(a));
+export const leftIdentity = (M, a, f, exp = expect) => {
+  exp(chain(f, of(M, a))).toEqual(f(a));
 };
 
-export const rightIdentity = <T>(M: MonadConstructor, m: Monad<T>) => {
-  expect(m.chain(M.of.bind(M))).toEqual(m);
+export const rightIdentity = (M, m, exp = expect) => {
+  exp(chain(M.of.bind(M), m)).toEqual(m);
 };

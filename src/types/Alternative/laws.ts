@@ -1,14 +1,9 @@
-import { Alternative } from "./";
-import { PlusConstructor } from "../Plus";
+import { ap, alt, zero } from "../../";
 
-export const distributivity = <T>(
-  x: Alternative<T>,
-  f: Alternative<(a) => T>,
-  g: Alternative<(a) => T>
-) => {
-  expect(x.ap(f.alt(g) as any)).toEqual((x.ap(f) as any).alt(x.ap(g)));
+export const distributivity = (x, f, g, exp = expect) => {
+  exp(ap(alt(g, f) as any, x)).toEqual(alt(ap(g, x), ap(f, x)));
 };
 
-export const annihilation = <T>(A: PlusConstructor, x: Alternative<T>) => {
-  expect(x.ap(A.zero() as any)).toEqual(A.zero());
+export const annihilation = (A, x, exp = expect) => {
+  exp(ap(zero(A) as any, x)).toEqual(zero(A));
 };

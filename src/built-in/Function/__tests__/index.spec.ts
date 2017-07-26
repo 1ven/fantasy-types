@@ -14,12 +14,12 @@ const run = (law, args, input) =>
   ]);
 
 test("conforms Functor identity", () => {
-  run(F.laws.Functor.identity1, [a => a + 1], 5);
+  run(F.laws.Functor.identity, [a => a + 1], 5);
 });
 
 test("conforms Functor composition", () => {
   run(
-    F.laws.Functor.composition1,
+    F.laws.Functor.composition,
     [x => x + "a", x => x + "f", x => x + "g"],
     "x"
   );
@@ -39,27 +39,27 @@ test("conforms Profunctor composition", () => {
 
 test("conforms Apply composition", () => {
   run(
-    F.laws.Apply.composition1,
+    F.laws.Apply.composition,
     [x => x + "a", x => y => x + y + "u", x => y => x + y + "a"],
     "x"
   );
 });
 
 test("conforms Applicative identity", () => {
-  run(F.laws.Applicative.identity1, [Function, x => x + "a"], "x");
+  run(F.laws.Applicative.identity, [Function, x => x + "a"], "x");
 });
 
 test("conforms Applicative homomorphism", () => {
-  run(F.laws.Applicative.homomorphism1, [Function, "val", x => x + "b"], "x");
+  run(F.laws.Applicative.homomorphism, [Function, "val", x => x + "b"], "x");
 });
 
 test("conforms Applicative interchange", () => {
-  run(F.laws.Applicative.interchange1, [Function, "val", x => y => x + y], "x");
+  run(F.laws.Applicative.interchange, [Function, "val", x => y => x + y], "x");
 });
 
 test("conforms Chain associativity", () => {
   run(
-    F.laws.Chain.associativity1,
+    F.laws.Chain.associativity,
     [x => x + "a", x => y => x + y + "f", x => y => x + y + "g"],
     "x"
   );
@@ -78,15 +78,15 @@ test("conforms Contravariant composition", () => {
 });
 
 test("conforms Setoid reflexivity", () => {
-  F.laws.Setoid.reflexivity1(x => x + "a");
+  F.laws.Setoid.reflexivity(x => x + "a");
 });
 
 test("conforms Setoid symmetry", () => {
-  F.laws.Setoid.symmetry1(x => x + "a", y => y + "a");
+  F.laws.Setoid.symmetry(x => x + "a", y => y + "a");
 });
 
 test("conforms Setoid transitivity", () => {
-  F.laws.Setoid.transitivity1(x => x + "a", y => y + "a", z => z + "a");
+  F.laws.Setoid.transitivity(x => x + "a", y => y + "a", z => z + "a");
 });
 
 test("conforms Semigroupoid associativity", () => {

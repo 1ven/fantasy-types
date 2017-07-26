@@ -1,7 +1,7 @@
-import { Foldable } from "./";
+import { reduce, concat } from "../../";
 
-export const associativity = <T>(u: Foldable<T>, f) => {
-  expect(u.reduce(f, "z")).toEqual(
-    u.reduce((acc, x) => acc.concat([x]), []).reduce(f, "z")
+export const associativity = (u, f, exp = expect) => {
+  exp(reduce(f, "z", u)).toEqual(
+    reduce(f, "z", reduce((acc, x) => concat([x], acc), [], u))
   );
 };

@@ -1,9 +1,9 @@
-import { Alt } from "./";
+import { alt, map } from "../..";
 
-export const associativity = <T>(a: Alt<T>, b: Alt<T>, c: Alt<T>) => {
-  expect(a.alt(b).alt(c)).toEqual(a.alt(b.alt(c)));
+export const associativity = (a, b, c, exp = expect) => {
+  exp(alt(c, alt(b, a))).toEqual(alt(alt(c, b), a));
 };
 
-export const distributivity = <T>(a: Alt<T>, b: Alt<T>, f) => {
-  expect(a.alt(b).map(f)).toEqual((a.map(f) as any).alt(b.map(f)));
+export const distributivity = (a, b, f, exp = expect) => {
+  exp(map(f, alt(b, a))).toEqual(alt(map(f, b), map(f, a)));
 };

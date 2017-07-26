@@ -1,5 +1,4 @@
 import { compose, id } from "../../";
-import { Category, CategoryConstructor } from "./";
 
 export const rightIdentity = (C, a, exp = expect) => {
   exp(compose(id(C), a)).toEqual(a);

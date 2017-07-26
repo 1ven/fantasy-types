@@ -1,5 +1,4 @@
 import { contramap } from "../../";
-import { Contravariant } from "./";
 
 export const identity = (u, exp = expect) => {
   exp(contramap(a => a, u)).toEqual(u);

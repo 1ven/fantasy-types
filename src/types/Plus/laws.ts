@@ -1,14 +1,13 @@
-import { PlusConstructor } from "./";
-import { Alt } from "../Alt";
+import { alt, zero, map } from "../../";
 
-export const rightIdentity = <T>(A: PlusConstructor, x: Alt<T>) => {
-  expect(x.alt(A.zero())).toEqual(x);
+export const rightIdentity = (A, x, exp = expect) => {
+  exp(alt(zero(A), x)).toEqual(x);
 };
 
-export const leftIdentity = <T>(A: PlusConstructor, x: Alt<T>) => {
-  expect(A.zero().alt(x)).toEqual(x);
+export const leftIdentity = (A, x, exp = expect) => {
+  exp(alt(x, zero(A))).toEqual(x);
 };
 
-export const annihilation = (A: PlusConstructor, f) => {
-  expect(A.zero().map(f)).toEqual(A.zero());
+export const annihilation = (A, f, exp = expect) => {
+  exp(map(f, zero(A))).toEqual(zero(A));
 };

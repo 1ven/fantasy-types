@@ -1,9 +1,9 @@
-import { Monoid, MonoidConstructor } from "./";
+import { concat, empty } from "../../";
 
-export const rightIdentity = (M: MonoidConstructor, m: Monoid) => {
-  expect(m.concat(M.empty())).toEqual(m);
+export const rightIdentity = (M, m, exp = expect) => {
+  exp(concat(empty(M), m)).toEqual(m);
 };
 
-export const leftIdentity = (M: MonoidConstructor, m: Monoid) => {
-  expect(M.empty().concat(m)).toEqual(m);
+export const leftIdentity = (M, m, exp = expect) => {
+  exp(concat(m, empty(M))).toEqual(m);
 };

@@ -1,5 +1,5 @@
-import { Semigroup } from "./";
+import { concat } from "../../";
 
-export const associativity = (a: Semigroup, b: Semigroup, c: Semigroup) => {
-  expect(a.concat(b).concat(c)).toEqual(a.concat(b.concat(c)));
+export const associativity = (a, b, c, exp = expect) => {
+  exp(concat(c, concat(b, a))).toEqual(concat(concat(c, b), a));
 };

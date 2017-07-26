@@ -1,5 +1,4 @@
 import * as F from "../";
-import { Profunctor } from "./";
 
 export const identity = (p, exp = expect) => {
   exp(F.promap(a => a, b => b, p)).toEqual(p);

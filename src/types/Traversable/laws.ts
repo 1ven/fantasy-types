@@ -1,3 +1,4 @@
+import { traverse, of, map } from "../../";
 import { Traversable } from "./";
 import { Applicative, ApplicativeConstructor } from "../Applicative";
 import { makeCompose } from "../../utils";
@@ -6,25 +7,22 @@ export const naturality = <T>(
   F: ApplicativeConstructor,
   G: ApplicativeConstructor,
   u: Traversable<Applicative<T>>,
-  t
+  t,
+  exp = expect
 ) => {
   /**
    * Probably test is broken.
    */
-  // expect(t(u.traverse(F, x => x))).toEqual(u.traverse(G, t));
+  // exp(t(traverse(F, x => x, u))).toEqual(traverse(G, t, u));
 };
 
-export const identity = <T>(F: ApplicativeConstructor, u: Traversable<T>) => {
-  expect(u.traverse(F, F.of.bind(F))).toEqual(F.of(u));
+export const identity = <T>(F, u, exp = expect) => {
+  exp(traverse(F, F.of.bind(F), u)).toEqual(of(F, u));
 };
 
-export const composition = <T>(
-  F: ApplicativeConstructor,
-  G: ApplicativeConstructor,
-  u
-) => {
+export const composition = <T>(F, G, u, exp = expect) => {
   const Compose: any = makeCompose(F, G);
-  expect(u.traverse(Compose, x => new Compose(x))).toEqual(
-    new Compose(u.traverse(F, x => x).map(x => x.traverse(G, x => x)))
+  exp(traverse(Compose, x => new Compose(x), u)).toEqual(
+    new Compose(map(x => traverse(G, x => x, x), traverse(F, (x: any) => x, u)))
   );
 };

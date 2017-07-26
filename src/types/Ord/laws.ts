@@ -1,17 +1,17 @@
-import { Ord } from "./";
+import { lte, equals } from "../../";
 
-export const totality = (a: Ord, b: Ord) => {
-  expect(a.lte(b) || b.lte(a)).toBeTruthy();
+export const totality = (a, b, exp = expect) => {
+  exp(lte(b, a) || lte(a, b)).toBeTruthy();
 };
 
-export const antisymmetry = (a: Ord, b: Ord) => {
-  expect(a.lte(b)).toBeTruthy();
-  expect(b.lte(a)).toBeTruthy();
-  expect(a.equals(b)).toBeTruthy();
+export const antisymmetry = (a, b, exp = expect) => {
+  exp(lte(b, a)).toBeTruthy();
+  exp(lte(a, b)).toBeTruthy();
+  exp(equals(a, b)).toBeTruthy();
 };
 
-export const transitivity = (a: Ord, b: Ord, c: Ord) => {
-  expect(a.lte(b)).toBeTruthy();
-  expect(b.lte(c)).toBeTruthy();
-  expect(a.lte(c)).toBeTruthy();
+export const transitivity = (a, b, c, exp = expect) => {
+  exp(lte(b, a)).toBeTruthy();
+  exp(lte(c, b)).toBeTruthy();
+  exp(lte(c, a)).toBeTruthy();
 };

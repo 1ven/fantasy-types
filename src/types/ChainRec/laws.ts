@@ -1,11 +1,15 @@
-import { ChainRec, ChainRecConstructor } from "./";
+import { chainRec, chain, map } from "../../";
 
-export const equivalence = (M: ChainRecConstructor, p, d, n, i) => {
-  expect(
-    M.chainRec((next, done, v) => (p(v) ? d(v).map(done) : n(v).map(next)), i)
+export const equivalence = (M, p, d, n, i, exp = expect) => {
+  exp(
+    chainRec(
+      M,
+      (next, done, v) => (p(v) ? map(done, d(v)) as any : map(next, n(v))),
+      i
+    )
   ).toEqual(
     (function step(v) {
-      return p(v) ? d(v) : n(v).chain(step);
+      return p(v) ? d(v) : chain(step, n(v));
     })(i)
   );
 };
