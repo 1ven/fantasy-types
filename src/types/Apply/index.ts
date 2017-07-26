@@ -13,7 +13,10 @@ export function ap<T, T1>(
   b: PlainObject<T>
 ): PlainObject<T1>;
 export function ap<T, T1>(a: Array<(x: T) => T1>, b: Array<T>): Array<T1>;
-export function ap<T, T1>(a: Function, b: Function): Function;
+export function ap<T, T1, T2>(
+  a: Function,
+  f: (x: T) => (y: T1) => T2
+): Function;
 export function ap<T, T1>(a: Apply<(x: T) => T1>, b: Apply<T>): Apply<T1>;
 
 export function ap<T, T1>(a, b) {
