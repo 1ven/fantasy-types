@@ -1,6 +1,5 @@
 import * as F from "../../types";
 import { Setoid, Applicative, ApplicativeConstructor } from "../../types";
-import { extendClass } from "../../utils";
 
 import chainRec from "./chainRec";
 import of from "./of";
@@ -63,7 +62,3 @@ export const extended = {
     traverse
   }
 };
-
-const ArrayExtended: Constructor = extendClass(Array, extended);
-
-export default ArrayExtended;

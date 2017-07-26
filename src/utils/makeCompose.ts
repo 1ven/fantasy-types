@@ -1,21 +1,28 @@
-import { ApplicativeConstructor, Applicative, Apply } from "../types";
+import {
+  ApplicativeConstructor,
+  Applicative,
+  Apply,
+  ap,
+  map,
+  of
+} from "../types";
 
 export default (F: ApplicativeConstructor, G: ApplicativeConstructor) =>
   <ApplicativeConstructor>class Compose<T> implements Applicative<T> {
     constructor(public value: Applicative<Applicative<T>>) {}
 
     static of<T>(x: T) {
-      return new Compose<T>(F.of(G.of(x)));
+      return new Compose<T>(of(F, of(G, x)));
     }
 
     public ap<T1>(b: Compose<(a: T) => T1>) {
       // .map returns Functor, but should return Compose type. Generic problem
       return new Compose<T1>(
-        this.value.ap(b.value.map(u => y => y.ap(u)) as any)
+        ap(map(u => y => ap(u, y), b.value) as any, this.value)
       );
     }
 
     public map<T1>(f: (a: T) => T1) {
-      return new Compose<T1>(this.value.map(y => (y as any).map(f)) as any);
+      return new Compose<T1>(map(y => map(f, y), this.value) as any);
     }
   };
