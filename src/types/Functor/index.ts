@@ -1,5 +1,6 @@
-import * as array from "../../built-in/Array";
 import * as object from "../../built-in/Object";
+import * as array from "../../built-in/Array";
+import * as func from "../../built-in/Function";
 import { PlainObject } from "../../built-in/Object";
 
 export interface Functor<T> {
@@ -8,6 +9,7 @@ export interface Functor<T> {
 
 export function map<T, T1>(f: (x: T) => T1, a: PlainObject<T>): PlainObject<T1>;
 export function map<T, T1>(f: (x: T) => T1, a: Array<T>): Array<T1>;
+export function map<T, T1>(f: (x: T) => T1, a: Function): Function;
 export function map<T, T1>(f: (x: T) => T1, a: Functor<T>): Functor<T1>;
 
 export function map(f, a) {
@@ -19,6 +21,10 @@ export function map(f, a) {
 
   if (array.is(a)) {
     return apply(array);
+  }
+
+  if (func.is(a)) {
+    return apply(func);
   }
 
   return a.map(f);

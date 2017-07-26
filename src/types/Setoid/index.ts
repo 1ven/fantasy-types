@@ -1,4 +1,5 @@
 import * as array from "../../built-in/Array";
+import * as func from "../../built-in/Function";
 import * as boolean from "../../built-in/Boolean";
 import * as date from "../../built-in/Date";
 import * as error from "../../built-in/Error";
@@ -14,6 +15,7 @@ export interface Setoid {
 
 export function equals<T, T1>(a: PlainObject<T>, b: PlainObject<T1>): boolean;
 export function equals<T>(a: typeof b, b: Array<T>): boolean;
+export function equals(a: typeof b, b: Function): boolean;
 export function equals(a: typeof b, b: Boolean): boolean;
 export function equals(a: typeof b, b: Date): boolean;
 export function equals(a: typeof b, b: Error): boolean;
@@ -30,6 +32,10 @@ export function equals(a, b) {
   }
 
   if (array.is(b)) {
+    return apply(array);
+  }
+
+  if (func.is(b)) {
     return apply(array);
   }
 
