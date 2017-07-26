@@ -1,5 +1,5 @@
 import { PlainObject } from "./";
-import { of, map, ap } from "../../types";
+import { of, map, ap, concat } from "../../types";
 import { Applicative, ApplicativeConstructor } from "../../types";
 
 export default function traverse<T, T1>(
@@ -7,19 +7,20 @@ export default function traverse<T, T1>(
   A: ApplicativeConstructor,
   f: (a: T) => Applicative<T1>
 ) {
-  const initial = new (this.constructor as ObjectConstructor)({});
+  const Ctor = this.constructor as ObjectConstructor;
+  let acc = A.of(new Ctor({}));
 
-  return Object.keys(this).reduce((a: Applicative<T1>, key: string) => {
-    return ap(
-      map(
-        o => v => {
-          // Mutation
-          o[key] = v;
-          return 0;
-        },
-        a
-      ),
-      f(this[key])
-    );
-  }, of(A, initial));
+  for (var key in this) {
+    if (this.hasOwnProperty(key)) {
+      acc = ap(
+        map(
+          v => list => concat(list, new Ctor({ [key]: v })),
+          f(this[key])
+        ) as any,
+        acc
+      );
+    }
+  }
+
+  return acc;
 }

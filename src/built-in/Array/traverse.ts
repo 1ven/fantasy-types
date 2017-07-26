@@ -2,6 +2,7 @@ import { of, map, ap } from "../../types";
 import { Applicative, ApplicativeConstructor } from "../../types";
 
 export default function traverse<T, T1>(
+  this: Array<T>,
   A: ApplicativeConstructor,
   f: (a: T) => Applicative<T1>
 ) {

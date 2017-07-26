@@ -15,7 +15,9 @@ import traverse from "./traverse";
 import zero from "./zero";
 
 export interface Constructor extends F.MonoidConstructor, F.PlusConstructor {
-  new <T extends {}>(obj: T): ObjectExtended<T>;
+  new <T extends {}>(obj: PlainObject<T> | ObjectExtended<T>): ObjectExtended<
+    T
+  >;
 }
 
 export interface ObjectExtended<T>

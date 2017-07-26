@@ -37,9 +37,9 @@ test("conforms Ord antisymmetry", () => {
 
 test("conforms Ord transitivity", () => {
   laws.Ord.transitivity(
-    new ObjectExtended(1),
-    new ObjectExtended(2),
-    new ObjectExtended(3)
+    new ObjectExtended({ x: 1 }),
+    new ObjectExtended({ x: 2 }),
+    new ObjectExtended({ x: 3 })
   );
 });
 
@@ -74,8 +74,8 @@ test("conforms Functor composition", () => {
 test("conforms Apply composition", () => {
   laws.Apply.composition(
     new ObjectExtended({ x: "v" }),
-    new ObjectExtended(a => ({ x: a + "u" })),
-    new ObjectExtended(a => ({ x: a + "a" }))
+    new ObjectExtended({ x: a => a + "u" }),
+    new ObjectExtended({ x: a => a + "a" })
   );
 });
 
@@ -110,8 +110,8 @@ test("conforms Plus annihilation", () => {
 test("conforms Alternative distributivity", () => {
   laws.Alternative.distributivity(
     new ObjectExtended({ x: "x" }),
-    new ObjectExtended(a => ({ x: a + "f" })),
-    new ObjectExtended(a => ({ x: a + "f" }))
+    new ObjectExtended({ x: a => a + "f" }),
+    new ObjectExtended({ x: a => a + "f" })
   );
 });
 
@@ -130,7 +130,7 @@ test("conforms Traversable naturality", () => {
   laws.Traversable.naturality(
     ArrayExtended,
     ArrayExtended,
-    new ObjectExtended(new ObjectExtended({ x: "a" })),
+    new ObjectExtended({ x: new ArrayExtended("a") }),
     x => [x]
   );
 });
