@@ -1,5 +1,4 @@
 import * as F from "../../types";
-import { extendClass } from "../../utils";
 
 import id from "./id";
 import of from "./of";
@@ -45,7 +44,3 @@ export const extended = {
     contramap
   }
 };
-
-const FunctionExtended: Constructor = extendClass(Function, extended);
-
-export default FunctionExtended;

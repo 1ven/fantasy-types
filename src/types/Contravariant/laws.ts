@@ -1,9 +1,10 @@
+import { contramap } from "../../";
 import { Contravariant } from "./";
 
-export const identity = <T>(u: Contravariant<T>) => {
-  expect(u.contramap(a => a)).toEqual(u);
+export const identity = (u, exp = expect) => {
+  exp(contramap(a => a, u)).toEqual(u);
 };
 
-export const composition = <T>(u: Contravariant<T>, f, g) => {
-  expect(u.contramap(x => f(g(x)))).toEqual(u.contramap(f).contramap(g));
+export const composition = (u, f, g, exp = expect) => {
+  exp(contramap(x => f(g(x)), u)).toEqual(contramap(g, contramap(f, u)));
 };

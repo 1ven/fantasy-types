@@ -1,3 +1,4 @@
+import { of, ap } from "../../";
 import { Applicative, ApplicativeConstructor } from "./";
 
 export const identity = <T>(A: ApplicativeConstructor, v: Applicative<T>) => {
@@ -14,4 +15,16 @@ export const interchange = <T, T1>(
   u: Applicative<(a) => T>
 ) => {
   expect(A.of(y).ap(u)).toEqual(u.ap(A.of(f => f(y))));
+};
+
+export const identity1 = (A, v, exp = expect) => {
+  exp(ap(of(A, x => x), v)).toEqual(v);
+};
+
+export const homomorphism1 = (A, x, f, exp = expect) => {
+  exp(ap(of(A, f), of(A, x))).toEqual(of(A, f(x)));
+};
+
+export const interchange1 = (A, y, u, exp = expect) => {
+  exp(ap(u, of(A, y))).toEqual(ap(of(A, f => f(y)), u));
 };
