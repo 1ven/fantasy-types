@@ -1,7 +1,6 @@
 import * as F from "../../types";
 import * as isPlainObject from "is-plain-object";
 import { Setoid, Applicative, ApplicativeConstructor } from "../../types";
-import { extendClass } from "../../utils";
 
 import empty from "./empty";
 import concat from "./concat";
@@ -55,7 +54,3 @@ export const extended = {
     traverse
   }
 };
-
-const ObjectExtended: Constructor = extendClass(Object, extended);
-
-export default ObjectExtended;

@@ -1,5 +1,4 @@
 import * as F from "../../types";
-import { extendClass } from "../../utils";
 
 import equals from "./equals";
 import lte from "./lte";
@@ -29,7 +28,3 @@ export const extended = {
     lte
   }
 };
-
-const StringExtended: Constructor = extendClass(String, extended);
-
-export default StringExtended;

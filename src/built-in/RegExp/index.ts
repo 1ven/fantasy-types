@@ -18,7 +18,3 @@ export const extended = {
     equals
   }
 };
-
-const RegExpExtended: Constructor = extendClass(RegExp, extended);
-
-export default RegExpExtended;

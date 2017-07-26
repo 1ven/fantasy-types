@@ -1,5 +1,4 @@
 import * as F from "../../types";
-import { extendClass } from "../../utils";
 
 import equals from "./equals";
 
@@ -18,7 +17,3 @@ export const extended = {
     equals
   }
 };
-
-const ErrorExtended: Constructor = extendClass(Error, extended);
-
-export default ErrorExtended;

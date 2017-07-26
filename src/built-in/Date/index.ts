@@ -1,5 +1,4 @@
 import * as F from "../../types";
-import { extendClass } from "../../utils";
 
 import equals from "./equals";
 import lte from "./lte";
@@ -20,7 +19,3 @@ export const extended = {
     lte
   }
 };
-
-const DateExtended: Constructor = extendClass(Date, extended);
-
-export default DateExtended;

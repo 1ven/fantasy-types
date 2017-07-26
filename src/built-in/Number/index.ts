@@ -1,5 +1,4 @@
 import * as F from "../../types";
-import { extendClass } from "../../utils";
 
 import equals from "./equals";
 import lte from "./lte";
@@ -21,7 +20,3 @@ export const extended = {
     lte
   }
 };
-
-const NumberExtended: Constructor = extendClass(Number, extended);
-
-export default NumberExtended;
