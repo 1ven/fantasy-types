@@ -1,6 +1,6 @@
 import * as array from "../../built-in/Array";
 import * as boolean from "../../built-in/Boolean";
-import * as date from "../../built-in/Boolean";
+import * as date from "../../built-in/Date";
 import * as number from "../../built-in/Number";
 import * as string from "../../built-in/String";
 import * as object from "../../built-in/Object";

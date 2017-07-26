@@ -1,34 +1,25 @@
-import DateExtended from "../";
 import { laws } from "../../../types";
 
 test("conforms Setoid reflexivity", () => {
-  laws.Setoid.reflexivity(new DateExtended(1));
+  laws.Setoid.reflexivity(new Date(1));
 });
 
 test("conforms Setoid symmetry", () => {
-  laws.Setoid.symmetry(new DateExtended(1), new DateExtended(2));
+  laws.Setoid.symmetry(new Date(1), new Date(2));
 });
 
 test("conforms Setoid transitivity", () => {
-  laws.Setoid.transitivity(
-    new DateExtended(1),
-    new DateExtended(1),
-    new DateExtended(1)
-  );
+  laws.Setoid.transitivity(new Date(1), new Date(1), new Date(1));
 });
 
 test("conforms Ord totality", () => {
-  laws.Ord.totality(new DateExtended(1), new DateExtended(2));
+  laws.Ord.totality(new Date(1), new Date(2));
 });
 
 test("conforms Ord antisymmetry", () => {
-  laws.Ord.antisymmetry(new DateExtended(1), new DateExtended(1));
+  laws.Ord.antisymmetry(new Date(1), new Date(1));
 });
 
 test("conforms Ord transitivity", () => {
-  laws.Ord.transitivity(
-    new DateExtended(1),
-    new DateExtended(2),
-    new DateExtended(3)
-  );
+  laws.Ord.transitivity(new Date(1), new Date(2), new Date(3));
 });
