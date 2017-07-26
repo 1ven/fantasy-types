@@ -2,7 +2,7 @@ import * as F from "../../../types";
 
 const exec = (x, input) => {
   const result = x(input);
-  typeof result !== "function" ? result : result(input);
+  return typeof result !== "function" ? result : result(input);
 };
 
 const run = (law, args, input) =>
