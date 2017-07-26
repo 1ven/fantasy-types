@@ -1,150 +1,105 @@
-import ObjectExtended from "../";
-import ArrayExtended from "../../Array";
 import { laws } from "../../../types";
 
 test("conforms Setoid reflexivity", () => {
-  laws.Setoid.reflexivity(new ObjectExtended({ x: "a" }));
+  laws.Setoid.reflexivity({ x: "a" });
 });
 
 test("conforms Setoid symmetry", () => {
-  laws.Setoid.symmetry(
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "b" })
-  );
+  laws.Setoid.symmetry({ x: "a" }, { x: "b" });
 });
 
 test("conforms Setoid transitivity", () => {
-  laws.Setoid.transitivity(
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "a" })
-  );
+  laws.Setoid.transitivity({ x: "a" }, { x: "a" }, { x: "a" });
 });
 
 test("conforms Ord totality", () => {
-  laws.Ord.totality(
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "b" })
-  );
+  laws.Ord.totality({ x: "a" }, { x: "b" });
 });
 
 test("conforms Ord antisymmetry", () => {
-  laws.Ord.antisymmetry(
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "a" })
-  );
+  laws.Ord.antisymmetry({ x: "a" }, { x: "a" });
 });
 
 test("conforms Ord transitivity", () => {
-  laws.Ord.transitivity(
-    new ObjectExtended({ x: 1 }),
-    new ObjectExtended({ x: 2 }),
-    new ObjectExtended({ x: 3 })
-  );
+  laws.Ord.transitivity({ x: 1 }, { x: 2 }, { x: 3 });
 });
 
 test("conforms Semigroup associativity", () => {
-  laws.Semigroup.associativity(
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "b" }),
-    new ObjectExtended({ x: "c" })
-  );
+  laws.Semigroup.associativity({ x: "a" }, { x: "b" }, { x: "c" });
 });
 
 test("conforms Monoid right identity", () => {
-  laws.Monoid.rightIdentity(ObjectExtended, new ObjectExtended({ x: "m" }));
+  laws.Monoid.rightIdentity(Object, { x: "m" });
 });
 
 test("conforms Monoid left identity", () => {
-  laws.Monoid.leftIdentity(ObjectExtended, new ObjectExtended({ x: "m" }));
+  laws.Monoid.leftIdentity(Object, { x: "m" });
 });
 
 test("conforms Functor identity", () => {
-  laws.Functor.identity(new ObjectExtended({ x: "u" }));
+  laws.Functor.identity({ x: "u" });
 });
 
 test("conforms Functor composition", () => {
   laws.Functor.composition(
-    new ObjectExtended({ x: "u" }),
+    { x: "u" },
     a => ({ x: a + "f" }),
     a => ({ x: a + "g" })
   );
 });
 
 test("conforms Apply composition", () => {
-  laws.Apply.composition(
-    new ObjectExtended({ x: "v" }),
-    new ObjectExtended({ x: a => a + "u" }),
-    new ObjectExtended({ x: a => a + "a" })
-  );
+  laws.Apply.composition({ x: "v" }, { x: a => a + "u" }, { x: a => a + "a" });
 });
 
 test("conforms Alt associativity", () => {
-  laws.Alt.associativity(
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "b" }),
-    new ObjectExtended({ x: "c" })
-  );
+  laws.Alt.associativity({ x: "a" }, { x: "b" }, { x: "c" });
 });
 
 test("conforms Alt distributivity", () => {
-  laws.Alt.distributivity(
-    new ObjectExtended({ x: "a" }),
-    new ObjectExtended({ x: "b" }),
-    x => x + "f"
-  );
+  laws.Alt.distributivity({ x: "a" }, { x: "b" }, x => x + "f");
 });
 
 test("conforms Plus right identity", () => {
-  laws.Plus.rightIdentity(ObjectExtended, new ObjectExtended({ x: "x" }));
+  laws.Plus.rightIdentity(Object, { x: "x" });
 });
 
 test("conforms Plus left identity", () => {
-  laws.Plus.leftIdentity(ObjectExtended, new ObjectExtended({ x: "x" }));
+  laws.Plus.leftIdentity(Object, { x: "x" });
 });
 
 test("conforms Plus annihilation", () => {
-  laws.Plus.annihilation(ObjectExtended, a => ({ x: a + "f" }));
+  laws.Plus.annihilation(Object, a => ({ x: a + "f" }));
 });
 
 test("conforms Alternative distributivity", () => {
   laws.Alternative.distributivity(
-    new ObjectExtended({ x: "x" }),
-    new ObjectExtended({ x: a => a + "f" }),
-    new ObjectExtended({ x: a => a + "f" })
+    { x: "x" },
+    { x: a => a + "f" },
+    { x: a => a + "f" }
   );
 });
 
 test("conforms Alternative annihilation", () => {
-  laws.Alternative.annihilation(ObjectExtended, new ObjectExtended({ x: "x" }));
+  laws.Alternative.annihilation(Object, { x: "x" });
 });
 
 test("conforms Foldable associativity", () => {
-  laws.Foldable.associativity(
-    new ObjectExtended({ x: "u" }),
-    (acc, val) => acc + val.x
-  );
+  laws.Foldable.associativity({ x: "u" }, (acc, val) => acc + val.x);
 });
-
-// test("conforms Traversable naturality", () => {
-//   laws.Traversable.naturality(
-//     ArrayExtended,
-//     ArrayExtended,
-//     new ObjectExtended({ x: new ArrayExtended("a") }),
-//     x => [x]
-//   );
-// });
 
 test("conforms Traversable naturality");
 
 test("conforms Traversable identity", () => {
-  laws.Traversable.identity(ArrayExtended, new ObjectExtended({ x: "u" }));
+  laws.Traversable.identity(Array, { x: "u" });
 });
 
 test("conforms Traversable composition", () => {
-  laws.Traversable.composition(
-    ArrayExtended,
-    ArrayExtended,
-    new ObjectExtended(new ObjectExtended(new ObjectExtended({ x: "u" })))
-  );
+  laws.Traversable.composition(Array, Array, {
+    x: {
+      y: {
+        z: "u"
+      }
+    }
+  });
 });

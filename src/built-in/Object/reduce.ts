@@ -7,5 +7,5 @@ export default function reduce<T, T1>(
 ) {
   return Object.keys(this)
     .sort()
-    .reduce((acc: T1, key: string) => f(acc, self[key]), initial);
+    .reduce((acc: T1, key: string) => f(acc, this[key]), initial);
 }

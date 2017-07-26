@@ -1,4 +1,5 @@
 import { PlainObject } from "./";
+import * as Z from "sanctuary-type-classes";
 import * as F from "../../types";
 
 export default function lte<T>(other: PlainObject<T>) {
@@ -25,8 +26,8 @@ export default function lte<T>(other: PlainObject<T>) {
       return false;
     }
 
-    if (!F.equals(this[k], other[k])) {
-      return F.lte(this[k], other[k]);
+    if (!F.equals(other[k], this[k])) {
+      return F.lte(other[k], this[k]);
     }
   }
 }
