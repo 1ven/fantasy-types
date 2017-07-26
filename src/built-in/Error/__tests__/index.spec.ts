@@ -1,18 +1,13 @@
-import ErrorExtended from "../";
 import { laws } from "../../../types";
 
 test("conforms Setoid reflexivity", () => {
-  laws.Setoid.reflexivity(new ErrorExtended("a"));
+  laws.Setoid.reflexivity(new Error("a"));
 });
 
 test("conforms Setoid symmetry", () => {
-  laws.Setoid.symmetry(new ErrorExtended("a"), new ErrorExtended("b"));
+  laws.Setoid.symmetry(new Error("a"), new Error("b"));
 });
 
 test("conforms Setoid transitivity", () => {
-  laws.Setoid.transitivity(
-    new ErrorExtended("a"),
-    new ErrorExtended("a"),
-    new ErrorExtended("a")
-  );
+  laws.Setoid.transitivity(new Error("a"), new Error("a"), new Error("a"));
 });
