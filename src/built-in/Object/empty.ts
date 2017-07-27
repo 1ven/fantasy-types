@@ -1,3 +1,1 @@
-export default function(this: ObjectConstructor) {
-  return {};
-}
+export default () => ({});

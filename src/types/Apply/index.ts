@@ -24,7 +24,7 @@ export function ap<T, T1>(a, b) {
   const apply1 = obj => obj.methods.ap(a, b);
 
   if (object.is(b)) {
-    return apply(object);
+    return apply1(object);
   }
 
   if (array.is(b)) {

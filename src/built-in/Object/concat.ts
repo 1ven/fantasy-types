@@ -1,19 +1,16 @@
+import { curry } from "../../methods";
 import { PlainObject } from "./";
 
-export default function<T>(other: PlainObject<T>) {
+export default curry(<T>(a: PlainObject<T>, b: PlainObject<T>) => {
   let result = {};
 
-  for (let key in this) {
-    if (this.hasOwnProperty(key)) {
-      result[key] = this[key];
-    }
+  for (let key in b) {
+    result[key] = b[key];
   }
 
-  for (let key in other) {
-    if (other.hasOwnProperty(key)) {
-      result[key] = other[key];
-    }
+  for (let key in a) {
+    result[key] = a[key];
   }
 
   return result;
-}
+});

@@ -1,4 +1,4 @@
-import { PlainObject } from "./";
+import { curry } from "../../methods";
 import {
   Applicative,
   ApplicativeConstructor,
@@ -7,22 +7,23 @@ import {
   ap,
   concat
 } from "../../types";
+import { PlainObject } from "./";
 
-export default function<T, T1>(
-  this: PlainObject<T>,
-  A: ApplicativeConstructor,
-  f: (a: T) => Applicative<T1>
-) {
-  let acc = A.of({});
+export default curry(
+  <T, T1>(
+    A: ApplicativeConstructor,
+    f: (a: T) => Applicative<T1>,
+    obj: PlainObject<T>
+  ) => {
+    let acc = A.of({});
 
-  for (var key in this) {
-    if (this.hasOwnProperty(key)) {
+    for (let key in obj) {
       acc = ap(
-        map(v => list => concat(list, { [key]: v }), f(this[key])) as any,
+        map(v => list => concat(list, { [key]: v }), f(obj[key])) as any,
         acc
       );
     }
-  }
 
-  return acc;
-}
+    return acc;
+  }
+);

@@ -35,7 +35,7 @@ export function traverse(A, f, a) {
   const apply1 = obj => obj.methods.traverse(A, f, a);
 
   if (object.is(a)) {
-    return apply(object);
+    return apply1(object);
   }
 
   if (array.is(a)) {

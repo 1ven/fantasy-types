@@ -21,7 +21,7 @@ export function empty(M) {
   const apply1 = obj => obj.methods.empty();
 
   if (object.isConstructor(M)) {
-    return apply(object);
+    return apply1(object);
   }
 
   if (array.isConstructor(M)) {

@@ -40,17 +40,15 @@ export const is = <T>(val: any): val is PlainObject<T> => isPlainObject(val);
 export const isConstructor = (Ctor: any): Ctor is ObjectConstructor =>
   Ctor === Object;
 
-export const extended = {
+export const methods = {
   empty,
   zero,
-  prototype: {
-    concat,
-    alt,
-    map,
-    reduce,
-    equals,
-    lte,
-    ap,
-    traverse
-  }
+  concat,
+  alt,
+  map,
+  reduce,
+  equals,
+  lte,
+  ap,
+  traverse
 };

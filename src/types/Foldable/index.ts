@@ -27,7 +27,7 @@ export function reduce(f, initial, a) {
   const apply1 = obj => obj.methods.reduce(f, initial, a);
 
   if (object.is(a)) {
-    return apply(object);
+    return apply1(object);
   }
 
   if (array.is(a)) {

@@ -17,7 +17,7 @@ export function map(f, a) {
   const apply1 = obj => obj.methods.map(f, a);
 
   if (object.is(a)) {
-    return apply(object);
+    return apply1(object);
   }
 
   if (array.is(a)) {

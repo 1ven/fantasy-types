@@ -1,21 +1,22 @@
+import { curry } from "../../methods";
+import { Ord, lte, equals } from "../../types";
 import { PlainObject } from "./";
-import { lte, equals } from "../../types";
 
-export default function<T>(other: PlainObject<T>) {
-  let thisKeys = Object.keys(this).sort();
-  let otherKeys = Object.keys(other).sort();
+export default curry(<T extends Ord>(a: PlainObject<T>, b: PlainObject<T>) => {
+  let aKeys = Object.keys(a).sort();
+  let bKeys = Object.keys(b).sort();
 
   while (true) {
-    if (thisKeys.length === 0) {
+    if (bKeys.length === 0) {
       return true;
     }
 
-    if (otherKeys.length === 0) {
+    if (aKeys.length === 0) {
       return false;
     }
 
-    var k = thisKeys.shift();
-    var z = otherKeys.shift();
+    var k = bKeys.shift();
+    var z = aKeys.shift();
 
     if (k < z) {
       return true;
@@ -25,8 +26,8 @@ export default function<T>(other: PlainObject<T>) {
       return false;
     }
 
-    if (!equals(other[k], this[k])) {
-      return lte(other[k], this[k]);
+    if (!equals(a[k], b[k])) {
+      return lte(a[k], b[k]);
     }
   }
-}
+});

@@ -24,7 +24,7 @@ export function lte(a, b) {
   const apply1 = obj => obj.methods.lte(a, b);
 
   if (object.is(b)) {
-    return apply(object);
+    return apply1(object);
   }
 
   if (array.is(b)) {

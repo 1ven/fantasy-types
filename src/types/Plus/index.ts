@@ -19,7 +19,7 @@ export function zero(P) {
   const apply1 = obj => obj.methods.zero();
 
   if (object.isConstructor(P)) {
-    return apply(object);
+    return apply1(object);
   }
 
   if (array.isConstructor(P)) {
