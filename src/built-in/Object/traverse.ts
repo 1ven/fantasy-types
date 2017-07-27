@@ -15,7 +15,7 @@ export default curry(
     f: (a: T) => Applicative<T1>,
     obj: PlainObject<T>
   ) => {
-    let acc = A.of({});
+    let acc = of(A, {});
 
     for (let key in obj) {
       acc = ap(
