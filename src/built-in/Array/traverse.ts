@@ -1,4 +1,4 @@
-import { curry } from "../../";
+import { curry } from "../../methods";
 import { Applicative, ApplicativeConstructor, of, map, ap } from "../../types";
 
 export default curry(

@@ -1,4 +1,4 @@
-import { curry } from "../../";
+import { curry } from "../../methods";
 
 export default curry(
   <T1, T2, T3>(

@@ -1,4 +1,4 @@
-import { curry } from "../../";
+import { curry } from "../../methods";
 import { Ord, lte, equals } from "../../types";
 
 export default curry(<T extends Ord>(a: T[], b: T[]) => {

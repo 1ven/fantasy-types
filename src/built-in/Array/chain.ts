@@ -1,4 +1,4 @@
-import { curry } from "../../";
+import { curry } from "../../methods";
 
 export default curry(<T, T1>(f: (a: T) => T1[], arr: T[]) => {
   let result = [];

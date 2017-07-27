@@ -1,4 +1,4 @@
-import { curry } from "../../";
+import { curry } from "../../methods";
 import { Setoid, equals } from "../../types";
 
 export default curry(<T extends Setoid>(a: T[], b: T[]) => {
