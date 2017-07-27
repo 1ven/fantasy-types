@@ -13,8 +13,6 @@ export const is = <T>(val: any): val is RegExp => val instanceof RegExp;
 export const isConstructor = (Ctor: any): Ctor is RegExpConstructor =>
   Ctor === RegExp;
 
-export const extended = {
-  prototype: {
-    equals
-  }
+export const methods = {
+  equals
 };

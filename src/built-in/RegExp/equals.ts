@@ -1,10 +1,11 @@
-export default function(other: RegExp) {
-  return (
-    other.source === this.source &&
-    other.global === this.global &&
-    other.ignoreCase === this.ignoreCase &&
-    other.multiline === this.multiline &&
-    other.sticky === this.sticky &&
-    other.unicode === this.unicode
-  );
-}
+import { curry } from "../../methods";
+
+export default curry(
+  (a: RegExp, b: RegExp) =>
+    a.source === b.source &&
+    a.global === b.global &&
+    a.ignoreCase === b.ignoreCase &&
+    a.multiline === b.multiline &&
+    a.sticky === b.sticky &&
+    a.unicode === b.unicode
+);

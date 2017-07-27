@@ -57,7 +57,7 @@ export function equals(a, b) {
   }
 
   if (regexp.is(b)) {
-    return apply(regexp);
+    return apply1(regexp);
   }
 
   if (string.is(b)) {
