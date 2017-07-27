@@ -11,10 +11,10 @@ export function id(A: FunctionConstructor): Function;
 export function id(A: CategoryConstructor): Category;
 
 export function id(A) {
-  const apply1 = obj => obj.methods.id();
+  const apply = obj => obj.methods.id();
 
   if (func.isConstructor(A)) {
-    return apply1(func);
+    return apply(func);
   }
 
   return A.id();

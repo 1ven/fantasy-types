@@ -25,43 +25,42 @@ export function equals(a: typeof b, b: String): boolean;
 export function equals<T extends Setoid>(a: typeof b, b: T): boolean;
 
 export function equals(a, b) {
-  const apply = obj => obj.extended.prototype.equals.apply(b, [a]) as boolean;
-  const apply1 = obj => obj.methods.equals(a, b);
+  const apply = obj => obj.methods.equals(a, b);
 
   if (object.is(b)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.is(b)) {
-    return apply1(array);
+    return apply(array);
   }
 
   if (func.is(b)) {
-    return apply1(func);
+    return apply(func);
   }
 
   if (boolean.is(b)) {
-    return apply1(boolean);
+    return apply(boolean);
   }
 
   if (date.is(b)) {
-    return apply1(date);
+    return apply(date);
   }
 
   if (error.is(b)) {
-    return apply1(error);
+    return apply(error);
   }
 
   if (number.is(b)) {
-    return apply1(number);
+    return apply(number);
   }
 
   if (regexp.is(b)) {
-    return apply1(regexp);
+    return apply(regexp);
   }
 
   if (string.is(b)) {
-    return apply1(string);
+    return apply(string);
   }
 
   return b.equals(a);

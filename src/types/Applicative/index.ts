@@ -14,15 +14,14 @@ export function of<T>(A: FunctionConstructor, a: T): Function;
 export function of<T>(A: ApplicativeConstructor, a: T): Applicative<T>;
 
 export function of<T>(A, a) {
-  const apply = obj => obj.extended.of.apply(A, [a]);
-  const apply1 = obj => obj.methods.of(a);
+  const apply = obj => obj.methods.of(a);
 
   if (array.isConstructor(A)) {
-    return apply1(array);
+    return apply(array);
   }
 
   if (func.isConstructor(A)) {
-    return apply1(func);
+    return apply(func);
   }
 
   return A.of(a);

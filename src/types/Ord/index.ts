@@ -20,31 +20,30 @@ export function lte(a: typeof b, b: String): boolean;
 export function lte<T extends Ord>(a: typeof b, b: T): boolean;
 
 export function lte(a, b) {
-  const apply = obj => obj.extended.prototype.lte.apply(b, [a]);
-  const apply1 = obj => obj.methods.lte(a, b);
+  const apply = obj => obj.methods.lte(a, b);
 
   if (object.is(b)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.is(b)) {
-    return apply1(array);
+    return apply(array);
   }
 
   if (boolean.is(b)) {
-    return apply1(boolean);
+    return apply(boolean);
   }
 
   if (date.is(b)) {
-    return apply1(date);
+    return apply(date);
   }
 
   if (number.is(b)) {
-    return apply1(number);
+    return apply(number);
   }
 
   if (string.is(b)) {
-    return apply1(string);
+    return apply(string);
   }
 
   return b.lte(a);

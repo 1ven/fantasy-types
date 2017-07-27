@@ -31,15 +31,14 @@ export function traverse<T, T1>(
 ): Applicative<T1 | Traversable<T>>;
 
 export function traverse(A, f, a) {
-  const apply = obj => obj.extended.prototype.traverse.apply(a, [A, f]);
-  const apply1 = obj => obj.methods.traverse(A, f, a);
+  const apply = obj => obj.methods.traverse(A, f, a);
 
   if (object.is(a)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.is(a)) {
-    return apply1(array);
+    return apply(array);
   }
 
   return a.traverse(A, f);

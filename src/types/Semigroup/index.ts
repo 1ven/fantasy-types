@@ -17,19 +17,18 @@ export function concat(a: typeof b, b: String): String;
 export function concat<T extends Semigroup>(a: typeof b, b: T): Semigroup;
 
 export function concat(a, b) {
-  const apply = obj => obj.extended.prototype.concat.apply(b, [a]);
-  const apply1 = obj => obj.methods.concat(a, b);
+  const apply = obj => obj.methods.concat(a, b);
 
   if (object.is(b)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.is(b)) {
-    return apply1(array);
+    return apply(array);
   }
 
   if (string.is(b)) {
-    return apply1(string);
+    return apply(string);
   }
 
   return b.concat(a);

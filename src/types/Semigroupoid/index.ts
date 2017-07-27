@@ -11,10 +11,10 @@ export function compose<T extends Semigroupoid>(
 ): Semigroupoid;
 
 export function compose(a, b) {
-  const apply1 = obj => obj.methods.compose(a, b);
+  const apply = obj => obj.methods.compose(a, b);
 
   if (func.is(b)) {
-    return apply1(func);
+    return apply(func);
   }
 
   return b.compose(a);

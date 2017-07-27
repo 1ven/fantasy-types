@@ -16,15 +16,14 @@ export function alt<T, T1>(a: Array<T>, b: Array<T1>): Array<T | T1>;
 export function alt<T extends Alt<T1>, T1>(a: typeof b, b: T): Alt<T1>;
 
 export function alt<T>(a, b) {
-  const apply = obj => obj.extended.prototype.alt.apply(b, [a]);
-  const apply1 = obj => obj.methods.alt(a, b);
+  const apply = obj => obj.methods.alt(a, b);
 
   if (object.is(b)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.is(b)) {
-    return apply1(array);
+    return apply(array);
   }
 
   return b.alt(a);

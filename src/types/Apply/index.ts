@@ -20,19 +20,18 @@ export function ap<T, T1, T2>(
 export function ap<T, T1>(a: Apply<(x: T) => T1>, b: Apply<T>): Apply<T1>;
 
 export function ap<T, T1>(a, b) {
-  const apply = obj => obj.extended.prototype.ap.apply(b, [a]);
-  const apply1 = obj => obj.methods.ap(a, b);
+  const apply = obj => obj.methods.ap(a, b);
 
   if (object.is(b)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.is(b)) {
-    return apply1(array);
+    return apply(array);
   }
 
   if (func.is(b)) {
-    return apply1(func);
+    return apply(func);
   }
 
   return b.ap(a);

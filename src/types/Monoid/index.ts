@@ -17,19 +17,18 @@ export function empty(M: StringConstructor): String;
 export function empty(M: MonoidConstructor): Monoid;
 
 export function empty(M) {
-  const apply = obj => obj.extended.empty.apply(M);
-  const apply1 = obj => obj.methods.empty();
+  const apply = obj => obj.methods.empty();
 
   if (object.isConstructor(M)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.isConstructor(M)) {
-    return apply1(array);
+    return apply(array);
   }
 
   if (string.isConstructor(M)) {
-    return apply1(string);
+    return apply(string);
   }
 
   return M.empty();

@@ -12,10 +12,10 @@ export function extend<T, T1>(
 ): Extend<T1>;
 
 export function extend(f, b) {
-  const apply1 = obj => obj.methods.extend(f, b);
+  const apply = obj => obj.methods.extend(f, b);
 
   if (array.is(b)) {
-    return apply1(array);
+    return apply(array);
   }
 
   return b.extend(f);

@@ -23,15 +23,14 @@ export function reduce<T, T1>(
 ): T1;
 
 export function reduce(f, initial, a) {
-  const apply = obj => obj.extended.prototype.reduce.apply(a, [f, initial]);
-  const apply1 = obj => obj.methods.reduce(f, initial, a);
+  const apply = obj => obj.methods.reduce(f, initial, a);
 
   if (object.is(a)) {
-    return apply1(object);
+    return apply(object);
   }
 
   if (array.is(a)) {
-    return apply1(array);
+    return apply(array);
   }
 
   return a.reduce(f, initial);
