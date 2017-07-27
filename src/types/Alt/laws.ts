@@ -1,4 +1,4 @@
-import { alt, map } from "../..";
+import { alt, map } from "../../types";
 
 export const associativity = (a, b, c, exp = expect) => {
   exp(alt(c, alt(b, a))).toEqual(alt(alt(c, b), a));

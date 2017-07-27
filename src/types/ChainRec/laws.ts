@@ -1,4 +1,4 @@
-import { chainRec, chain, map } from "../../";
+import { chainRec, chain, map } from "../../types";
 
 export const equivalence = (M, p, d, n, i, exp = expect) => {
   exp(

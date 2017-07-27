@@ -1,4 +1,4 @@
-import { contramap } from "../../";
+import { contramap } from "../../types";
 
 export const identity = (u, exp = expect) => {
   exp(contramap(a => a, u)).toEqual(u);

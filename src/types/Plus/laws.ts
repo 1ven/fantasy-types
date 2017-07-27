@@ -1,4 +1,4 @@
-import { alt, zero, map } from "../../";
+import { alt, zero, map } from "../../types";
 
 export const rightIdentity = (A, x, exp = expect) => {
   exp(alt(zero(A), x)).toEqual(x);

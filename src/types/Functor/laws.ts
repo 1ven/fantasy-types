@@ -1,4 +1,4 @@
-import { map } from "../../";
+import { map } from "../../types";
 
 export const identity = (u, exp = expect) => {
   exp(map(a => a, u)).toEqual(u);

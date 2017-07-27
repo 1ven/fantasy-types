@@ -1,4 +1,4 @@
-import * as F from "../";
+import * as F from "../../types";
 
 export const identity = (p, exp = expect) => {
   exp(F.promap(a => a, b => b, p)).toEqual(p);

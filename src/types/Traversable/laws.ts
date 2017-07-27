@@ -1,15 +1,7 @@
-import { traverse, of, map } from "../../";
-import { Traversable } from "./";
-import { Applicative, ApplicativeConstructor } from "../Applicative";
+import { traverse, of, map } from "../../types";
 import { makeCompose } from "../../utils";
 
-export const naturality = <T>(
-  F: ApplicativeConstructor,
-  G: ApplicativeConstructor,
-  u: Traversable<Applicative<T>>,
-  t,
-  exp = expect
-) => {
+export const naturality = <T>(F, G, u, t, exp = expect) => {
   /**
    * Probably test is broken.
    */

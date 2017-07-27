@@ -1,4 +1,4 @@
-import { compose, id } from "../../";
+import { compose, id } from "../../types";
 
 export const rightIdentity = (C, a, exp = expect) => {
   exp(compose(id(C), a)).toEqual(a);

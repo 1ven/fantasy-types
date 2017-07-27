@@ -1,4 +1,4 @@
-import { concat, empty } from "../../";
+import { concat, empty } from "../../types";
 
 export const rightIdentity = (M, m, exp = expect) => {
   exp(concat(empty(M), m)).toEqual(m);

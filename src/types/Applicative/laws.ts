@@ -1,4 +1,4 @@
-import { of, ap } from "../../";
+import { of, ap } from "../../types";
 
 export const identity = (A, v, exp = expect) => {
   exp(ap(of(A, x => x), v)).toEqual(v);

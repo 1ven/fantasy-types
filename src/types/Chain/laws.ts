@@ -1,4 +1,4 @@
-import { chain } from "../../";
+import { chain } from "../../types";
 
 export const associativity = (m, f, g, exp = expect) => {
   exp(chain(g, chain(f, m))).toEqual(chain(x => chain(g, f(x)), m));

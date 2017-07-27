@@ -17,13 +17,14 @@ export function alt<T extends Alt<T1>, T1>(a: typeof b, b: T): Alt<T1>;
 
 export function alt<T>(a, b) {
   const apply = obj => obj.extended.prototype.alt.apply(b, [a]);
+  const apply1 = obj => obj.methods.alt(a, b);
 
   if (object.is(b)) {
     return apply(object);
   }
 
   if (array.is(b)) {
-    return apply(array);
+    return apply1(array);
   }
 
   return b.alt(a);

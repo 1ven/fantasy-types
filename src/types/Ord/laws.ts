@@ -1,4 +1,4 @@
-import { lte, equals } from "../../";
+import { lte, equals } from "../../types";
 
 export const totality = (a, b, exp = expect) => {
   exp(lte(b, a) || lte(a, b)).toBeTruthy();

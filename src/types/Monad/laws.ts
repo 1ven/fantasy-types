@@ -1,4 +1,4 @@
-import { of, chain } from "../../";
+import { of, chain } from "../../types";
 
 export const leftIdentity = (M, a, f, exp = expect) => {
   exp(chain(f, of(M, a))).toEqual(f(a));

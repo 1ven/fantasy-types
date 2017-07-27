@@ -1,4 +1,4 @@
-import { equals } from "../../";
+import { equals } from "../../types";
 
 export const reflexivity = (a, exp = expect) => {
   exp(equals(a, a)).toBeTruthy();

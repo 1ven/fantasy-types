@@ -1,4 +1,4 @@
-import { ap, alt, zero } from "../../";
+import { ap, alt, zero } from "../../types";
 
 export const distributivity = (x, f, g, exp = expect) => {
   exp(ap(alt(g, f) as any, x)).toEqual(alt(ap(g, x), ap(f, x)));
