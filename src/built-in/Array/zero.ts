@@ -1,3 +1,3 @@
-export default function zero() {
+export default function() {
   return [];
 }

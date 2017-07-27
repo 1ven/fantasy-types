@@ -1,4 +1,4 @@
-export default function chain<T, T1>(f: (a: T) => Array<T1>) {
+export default function<T, T1>(f: (a: T) => Array<T1>) {
   let result = [];
 
   for (let v of this) {

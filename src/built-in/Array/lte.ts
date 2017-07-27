@@ -1,6 +1,6 @@
-import * as Z from "sanctuary-type-classes";
+import { lte, equals } from "../../types";
 
-export default function lte<T>(other: Array<T>) {
+export default function<T>(other: Array<T>) {
   let idx = 0;
   while (true) {
     if (idx === this.length) {
@@ -11,8 +11,8 @@ export default function lte<T>(other: Array<T>) {
       return false;
     }
 
-    if (!Z.equals(this[idx], other[idx])) {
-      return Z.lte(this[idx], other[idx]);
+    if (!equals(other[idx], this[idx])) {
+      return lte(other[idx], this[idx]);
     }
 
     idx += 1;

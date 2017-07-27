@@ -1,4 +1,4 @@
-export default function ap<T, T1>(fs: Array<(x: T) => T1>) {
+export default function<T, T1>(fs: Array<(x: T) => T1>) {
   let result = [];
 
   for (let idx = 0; idx < fs.length; idx += 1) {

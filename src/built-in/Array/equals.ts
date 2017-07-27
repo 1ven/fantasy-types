@@ -1,7 +1,6 @@
-import * as Z from "sanctuary-type-classes";
-import { Setoid } from "../../types";
+import { Setoid, equals } from "../../types";
 
-export default function equals<T extends Setoid>(other: Array<T>) {
+export default function<T extends Setoid>(other: Array<T>) {
   if (this.length !== other.length) {
     return false;
   }
@@ -11,7 +10,7 @@ export default function equals<T extends Setoid>(other: Array<T>) {
   }
 
   for (let idx = 0; idx < this.length; idx += 1) {
-    if (!Z.equals(this[idx], other[idx])) {
+    if (!equals(other[idx], this[idx])) {
       return false;
     }
   }

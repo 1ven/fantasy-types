@@ -86,7 +86,8 @@ test("conforms Setoid symmetry", () => {
 });
 
 test("conforms Setoid transitivity", () => {
-  F.laws.Setoid.transitivity(x => x + "a", y => y + "a", z => z + "a");
+  const func = x => x + "a";
+  F.laws.Setoid.transitivity(func, func, func);
 });
 
 test("conforms Semigroupoid associativity", () => {

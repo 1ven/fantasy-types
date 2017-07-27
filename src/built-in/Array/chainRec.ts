@@ -1,4 +1,4 @@
-export default function chainRec<T1, T2, T3>(
+export default function<T1, T2, T3>(
   f: (
     next: (a: T1) => { value: T2; done: boolean },
     done: (a: T1) => { value: T3; done: boolean },
