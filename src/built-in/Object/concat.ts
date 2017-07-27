@@ -1,7 +1,7 @@
 import { PlainObject } from "./";
 
 export default function concat<T>(other: PlainObject<T>) {
-  let result = new this.constructor({});
+  let result = {};
 
   for (let key in this) {
     if (this.hasOwnProperty(key)) {

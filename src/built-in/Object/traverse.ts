@@ -7,16 +7,12 @@ export default function traverse<T, T1>(
   A: ApplicativeConstructor,
   f: (a: T) => Applicative<T1>
 ) {
-  const Ctor = this.constructor as ObjectConstructor;
-  let acc = A.of(new Ctor({}));
+  let acc = A.of({});
 
   for (var key in this) {
     if (this.hasOwnProperty(key)) {
       acc = ap(
-        map(
-          v => list => concat(list, new Ctor({ [key]: v })),
-          f(this[key])
-        ) as any,
+        map(v => list => concat(list, { [key]: v }), f(this[key])) as any,
         acc
       );
     }
