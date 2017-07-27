@@ -1,7 +1,5 @@
-import * as Z from "sanctuary-type-classes";
+import { equals } from "../../types";
 
-export default function equals(other: Error) {
-  return (
-    Z.equals(this.name, other.name) && Z.equals(this.message, other.message)
-  );
+export default function(other: Error) {
+  return equals(other.name, this.name) && equals(other.message, this.message);
 }
