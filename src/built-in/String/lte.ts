@@ -1,7 +1,7 @@
-import * as Z from "sanctuary-type-classes";
+import { lte } from "../../types";
 
-export default function lte(other: String) {
+export default function(other: String) {
   return typeof this === "object"
-    ? Z.lte(this.valueOf(), other.valueOf())
+    ? lte(other.valueOf(), this.valueOf())
     : this <= other;
 }
