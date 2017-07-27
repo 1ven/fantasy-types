@@ -49,7 +49,7 @@ export function equals(a, b) {
   }
 
   if (error.is(b)) {
-    return apply(error);
+    return apply1(error);
   }
 
   if (number.is(b)) {
