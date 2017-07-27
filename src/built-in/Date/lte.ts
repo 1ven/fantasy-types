@@ -1,5 +1,5 @@
-import * as Z from "sanctuary-type-classes";
+import { lte } from "../../types";
 
-export default function lte(other: Date) {
-  return Z.lte(this.valueOf(), other.valueOf());
+export default function(other: Date) {
+  return lte(other.valueOf(), this.valueOf());
 }

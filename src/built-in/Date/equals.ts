@@ -1,5 +1,5 @@
-import * as Z from "sanctuary-type-classes";
+import { equals } from "../../types";
 
-export default function equals(other: Date) {
-  return Z.equals(this.valueOf(), other.valueOf());
+export default function(other: Date) {
+  return equals(other.valueOf(), this.valueOf());
 }
