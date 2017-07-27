@@ -1,6 +1,4 @@
-import * as Z from "sanctuary-type-classes";
-
-export default function equals(other: RegExp) {
+export default function(other: RegExp) {
   return (
     other.source === this.source &&
     other.global === this.global &&
