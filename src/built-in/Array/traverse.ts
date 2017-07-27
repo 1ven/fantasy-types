@@ -10,17 +10,11 @@ export default function traverse<T, T1>(
   type L = Array<A>;
 
   const list = map(f, this);
-  let acc = of(A, new this.constructor());
+  let acc = of(A, []);
   let idx = list.length - 1;
 
   while (idx >= 0) {
-    acc = ap(
-      map(
-        (el: A) => (list: L) => new this.constructor(...[el, ...list]),
-        list[idx]
-      ),
-      acc
-    );
+    acc = ap(map((el: A) => (list: L) => [el, ...list], list[idx]), acc);
     idx -= 1;
   }
 
