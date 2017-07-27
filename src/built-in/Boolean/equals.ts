@@ -1,7 +1,7 @@
-import * as Z from "sanctuary-type-classes";
+import { equals } from "../../types";
 
-export default function equals(other: Boolean) {
+export default function(other: Boolean) {
   return typeof this === "object"
-    ? Z.equals(this.valueOf(), other.valueOf())
-    : this === other;
+    ? equals(other.valueOf(), this.valueOf())
+    : other === this;
 }
