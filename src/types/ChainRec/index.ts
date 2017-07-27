@@ -38,10 +38,10 @@ export function chainRec<T1, T2, T3>(
 ): ChainRec<T2 | T3>;
 
 export function chainRec(C, f, i) {
-  const apply = obj => obj.extended.chainRec.apply(C, [f, i]);
+  const apply1 = obj => obj.methods.chainRec(f, i);
 
   if (array.isConstructor(C)) {
-    return apply(array);
+    return apply1(array);
   }
 
   return C.chainRec(f, i);

@@ -1,3 +1,5 @@
-export default function<T, T1>(other: Array<T>) {
-  return Array.prototype.concat.call(this, other);
-}
+import { curry } from "../../";
+
+export default curry(<T>(a: T[], b: T[]) =>
+  Array.prototype.concat.apply(b, [a])
+);

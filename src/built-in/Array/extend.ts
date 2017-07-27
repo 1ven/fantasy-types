@@ -1,3 +1,5 @@
-export default function<T, T1>(f: (a: Array<T>) => T1) {
-  return Array.prototype.map.call(this, (_, i: number) => f(this.slice(i)));
-}
+import { curry } from "../../";
+
+export default curry(<T, T1>(f: (a: T[]) => T1, arr: T[]) => {
+  return Array.prototype.map.call(arr, (_, i: number) => f(arr.slice(i)));
+});

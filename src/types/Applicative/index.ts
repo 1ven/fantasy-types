@@ -15,9 +15,10 @@ export function of<T>(A: ApplicativeConstructor, a: T): Applicative<T>;
 
 export function of<T>(A, a) {
   const apply = obj => obj.extended.of.apply(A, [a]);
+  const apply1 = obj => obj.methods.of(a);
 
   if (array.isConstructor(A)) {
-    return apply(array);
+    return apply1(array);
   }
 
   if (func.isConstructor(A)) {

@@ -44,21 +44,19 @@ export const is = <T>(arr: any): arr is Array<T> => arr instanceof Array;
 export const isConstructor = (Ctor: any): Ctor is ArrayConstructor =>
   Ctor === Array;
 
-export const extended = {
+export const methods = {
   empty,
   zero,
   of,
   chainRec,
-  prototype: {
-    concat,
-    alt,
-    map,
-    reduce,
-    extend,
-    equals,
-    lte,
-    ap,
-    chain,
-    traverse
-  }
+  concat,
+  alt,
+  map,
+  reduce,
+  extend,
+  equals,
+  lte,
+  ap,
+  chain,
+  traverse
 };

@@ -26,13 +26,14 @@ export function equals<T extends Setoid>(a: typeof b, b: T): boolean;
 
 export function equals(a, b) {
   const apply = obj => obj.extended.prototype.equals.apply(b, [a]) as boolean;
+  const apply1 = obj => obj.methods.equals(a, b);
 
   if (object.is(b)) {
     return apply(object);
   }
 
   if (array.is(b)) {
-    return apply(array);
+    return apply1(array);
   }
 
   if (func.is(b)) {

@@ -1,19 +1,20 @@
+import { curry } from "../../";
 import { Setoid, equals } from "../../types";
 
-export default function<T extends Setoid>(other: Array<T>) {
-  if (this.length !== other.length) {
+export default curry(<T extends Setoid>(a: T[], b: T[]) => {
+  if (b.length !== a.length) {
     return false;
   }
 
-  if (this === other) {
+  if (b === a) {
     return true;
   }
 
-  for (let idx = 0; idx < this.length; idx += 1) {
-    if (!equals(other[idx], this[idx])) {
+  for (let idx = 0; idx < b.length; idx += 1) {
+    if (!equals(a[idx], b[idx])) {
       return false;
     }
   }
 
   return true;
-}
+});

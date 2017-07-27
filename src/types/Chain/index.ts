@@ -12,9 +12,10 @@ export function chain<T, T1>(f: (x: T) => Chain<T1>, a: Chain<T>): Chain<T1>;
 
 export function chain<T, T1>(f, a) {
   const apply = obj => obj.extended.prototype.chain.apply(a, [f]);
+  const apply1 = obj => obj.methods.chain(f, a);
 
   if (array.is(a)) {
-    return apply(array);
+    return apply1(array);
   }
 
   if (func.is(a)) {

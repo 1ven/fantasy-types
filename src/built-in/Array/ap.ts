@@ -1,11 +1,13 @@
-export default function<T, T1>(fs: Array<(x: T) => T1>) {
+import { curry } from "../../";
+
+export default curry(<T, T1>(fs: (x: T) => T1[], arr: T[]) => {
   let result = [];
 
   for (let idx = 0; idx < fs.length; idx += 1) {
-    for (let idx2 = 0; idx2 < this.length; idx2 += 1) {
-      result.push(fs[idx](this[idx2]));
+    for (let idx2 = 0; idx2 < arr.length; idx2 += 1) {
+      result.push(fs[idx](arr[idx2]));
     }
   }
 
   return result;
-}
+});

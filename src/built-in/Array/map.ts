@@ -1,3 +1,6 @@
-export default function<T, T1, T2>(f: (a: T) => T1) {
-  return Array.prototype.map.call(this, (a: T) => f(a));
-}
+import { curry } from "../../";
+
+export default curry(
+  <T, T1>(f: (a: T) => T1, arr: T[]) =>
+    Array.prototype.map.call(arr, (a: T) => f(a)) as T1[]
+);

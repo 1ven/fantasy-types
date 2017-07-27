@@ -16,13 +16,14 @@ export function zero(P: PlusConstructor): Plus<void>;
 
 export function zero(P) {
   const apply = obj => obj.extended.zero.apply(P);
+  const apply1 = obj => obj.methods.zero();
 
   if (object.isConstructor(P)) {
     return apply(object);
   }
 
   if (array.isConstructor(P)) {
-    return apply(array);
+    return apply1(array);
   }
 
   return P.zero();

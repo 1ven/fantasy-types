@@ -1,20 +1,21 @@
-import { lte, equals } from "../../types";
+import { curry } from "../../";
+import { Ord, lte, equals } from "../../types";
 
-export default function<T>(other: Array<T>) {
+export default curry(<T extends Ord>(a: T[], b: T[]) => {
   let idx = 0;
   while (true) {
-    if (idx === this.length) {
+    if (idx === b.length) {
       return true;
     }
 
-    if (idx === other.length) {
+    if (idx === a.length) {
       return false;
     }
 
-    if (!equals(other[idx], this[idx])) {
-      return lte(other[idx], this[idx]);
+    if (!equals(a[idx], b[idx])) {
+      return lte(a[idx], b[idx]);
     }
 
     idx += 1;
   }
-}
+});

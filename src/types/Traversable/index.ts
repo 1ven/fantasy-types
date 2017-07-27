@@ -32,13 +32,14 @@ export function traverse<T, T1>(
 
 export function traverse(A, f, a) {
   const apply = obj => obj.extended.prototype.traverse.apply(a, [A, f]);
+  const apply1 = obj => obj.methods.traverse(A, f, a);
 
   if (object.is(a)) {
     return apply(object);
   }
 
   if (array.is(a)) {
-    return apply(array);
+    return apply1(array);
   }
 
   return a.traverse(A, f);

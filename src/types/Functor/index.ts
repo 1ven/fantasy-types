@@ -14,13 +14,14 @@ export function map<T, T1>(f: (x: T) => T1, a: Functor<T>): Functor<T1>;
 
 export function map(f, a) {
   const apply = obj => obj.extended.prototype.map.apply(a, [f]);
+  const apply1 = obj => obj.methods.map(f, a);
 
   if (object.is(a)) {
     return apply(object);
   }
 
   if (array.is(a)) {
-    return apply(array);
+    return apply1(array);
   }
 
   if (func.is(a)) {

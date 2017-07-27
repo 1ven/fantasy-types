@@ -18,13 +18,14 @@ export function empty(M: MonoidConstructor): Monoid;
 
 export function empty(M) {
   const apply = obj => obj.extended.empty.apply(M);
+  const apply1 = obj => obj.methods.empty();
 
   if (object.isConstructor(M)) {
     return apply(object);
   }
 
   if (array.isConstructor(M)) {
-    return apply(array);
+    return apply1(array);
   }
 
   if (string.isConstructor(M)) {

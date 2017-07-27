@@ -21,13 +21,14 @@ export function lte<T extends Ord>(a: typeof b, b: T): boolean;
 
 export function lte(a, b) {
   const apply = obj => obj.extended.prototype.lte.apply(b, [a]);
+  const apply1 = obj => obj.methods.lte(a, b);
 
   if (object.is(b)) {
     return apply(object);
   }
 
   if (array.is(b)) {
-    return apply(array);
+    return apply1(array);
   }
 
   if (boolean.is(b)) {

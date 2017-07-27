@@ -1,9 +1,11 @@
-export default function<T, T1>(f: (a: T) => Array<T1>) {
+import { curry } from "../../";
+
+export default curry(<T, T1>(f: (a: T) => T1[], arr: T[]) => {
   let result = [];
 
-  for (let v of this) {
+  for (let v of arr) {
     Array.prototype.push.apply(result, f(v));
   }
 
   return result;
-}
+});
