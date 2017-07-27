@@ -1,3 +1,3 @@
-export default function(other: String) {
-  return this + other;
-}
+import { curry } from "../../methods";
+
+export default curry((a: string, b: string) => b + a);

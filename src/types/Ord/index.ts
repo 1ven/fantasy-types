@@ -44,7 +44,7 @@ export function lte(a, b) {
   }
 
   if (string.is(b)) {
-    return apply(string);
+    return apply1(string);
   }
 
   return b.lte(a);

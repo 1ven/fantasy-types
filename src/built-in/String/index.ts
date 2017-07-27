@@ -20,11 +20,9 @@ export const is = (val: any): val is String =>
 export const isConstructor = (Ctor: any): Ctor is StringConstructor =>
   Ctor === String;
 
-export const extended = {
+export const methods = {
   empty,
-  prototype: {
-    concat,
-    equals,
-    lte
-  }
+  concat,
+  equals,
+  lte
 };

@@ -29,7 +29,7 @@ export function concat(a, b) {
   }
 
   if (string.is(b)) {
-    return apply(string);
+    return apply1(string);
   }
 
   return b.concat(a);

@@ -61,7 +61,7 @@ export function equals(a, b) {
   }
 
   if (string.is(b)) {
-    return apply(string);
+    return apply1(string);
   }
 
   return b.equals(a);

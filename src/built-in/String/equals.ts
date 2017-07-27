@@ -1,7 +1,3 @@
-import { equals } from "../../types";
+import { curry } from "../../methods";
 
-export default function(other: String) {
-  return typeof this === "object"
-    ? equals(other.valueOf(), this.valueOf())
-    : this === other;
-}
+export default curry((a: string, b: string) => b === a);

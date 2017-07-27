@@ -1,7 +1,3 @@
-import { lte } from "../../types";
+import { curry } from "../../methods";
 
-export default function(other: String) {
-  return typeof this === "object"
-    ? lte(other.valueOf(), this.valueOf())
-    : this <= other;
-}
+export default curry((a: string, b: string) => b <= a);

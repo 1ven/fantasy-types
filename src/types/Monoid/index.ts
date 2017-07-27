@@ -29,7 +29,7 @@ export function empty(M) {
   }
 
   if (string.isConstructor(M)) {
-    return apply(string);
+    return apply1(string);
   }
 
   return M.empty();
