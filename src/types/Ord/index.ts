@@ -40,7 +40,7 @@ export function lte(a, b) {
   }
 
   if (number.is(b)) {
-    return apply(number);
+    return apply1(number);
   }
 
   if (string.is(b)) {

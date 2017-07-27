@@ -53,7 +53,7 @@ export function equals(a, b) {
   }
 
   if (number.is(b)) {
-    return apply(number);
+    return apply1(number);
   }
 
   if (regexp.is(b)) {

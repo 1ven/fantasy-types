@@ -1,7 +1,5 @@
-import { equals } from "../../types";
+import { curry } from "../../methods";
 
-export default function(other: Number) {
-  return typeof this === "object"
-    ? equals(other.valueOf(), this.valueOf())
-    : (isNaN(this) && isNaN(other as number)) || this === other;
-}
+export default curry(
+  (a: number, b: number) => (isNaN(b) && isNaN(a)) || b === a
+);
