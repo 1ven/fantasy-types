@@ -45,7 +45,7 @@ export function equals(a, b) {
   }
 
   if (date.is(b)) {
-    return apply(date);
+    return apply1(date);
   }
 
   if (error.is(b)) {

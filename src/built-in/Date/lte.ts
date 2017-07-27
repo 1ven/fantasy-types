@@ -1,5 +1,4 @@
+import { curry } from "../../methods";
 import { lte } from "../../types";
 
-export default function(other: Date) {
-  return lte(other.valueOf(), this.valueOf());
-}
+export default curry((a: Date, b: Date) => lte(a.valueOf(), b.valueOf()));

@@ -1,5 +1,4 @@
+import { curry } from "../../methods";
 import { equals } from "../../types";
 
-export default function(other: Date) {
-  return equals(other.valueOf(), this.valueOf());
-}
+export default curry((a: Date, b: Date) => equals(a.valueOf(), b.valueOf()));

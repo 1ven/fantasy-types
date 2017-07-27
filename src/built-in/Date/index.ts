@@ -13,9 +13,7 @@ export const is = <T>(val: any): val is Date => val instanceof Date;
 export const isConstructor = (Ctor: any): Ctor is DateConstructor =>
   Ctor === Date;
 
-export const extended = {
-  prototype: {
-    equals,
-    lte
-  }
+export const methods = {
+  equals,
+  lte
 };

@@ -36,7 +36,7 @@ export function lte(a, b) {
   }
 
   if (date.is(b)) {
-    return apply(date);
+    return apply1(date);
   }
 
   if (number.is(b)) {
