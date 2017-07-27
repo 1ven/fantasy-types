@@ -1,7 +1,7 @@
-import * as Z from "sanctuary-type-classes";
+import { lte } from "../../types";
 
-export default function lte(other: Number) {
+export default function(other: Number) {
   return typeof this === "object"
-    ? Z.lte(this.valueOf(), other.valueOf())
+    ? lte(other.valueOf(), this.valueOf())
     : (isNaN(this) && isNaN(other as number)) || this <= other;
 }

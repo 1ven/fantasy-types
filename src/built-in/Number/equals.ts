@@ -1,7 +1,7 @@
-import * as Z from "sanctuary-type-classes";
+import { equals } from "../../types";
 
-export default function equals(other: Number) {
+export default function(other: Number) {
   return typeof this === "object"
-    ? Z.equals(this.valueOf(), other.valueOf())
+    ? equals(other.valueOf(), this.valueOf())
     : (isNaN(this) && isNaN(other as number)) || this === other;
 }
