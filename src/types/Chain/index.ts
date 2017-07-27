@@ -19,7 +19,7 @@ export function chain<T, T1>(f, a) {
   }
 
   if (func.is(a)) {
-    return apply(func);
+    return apply1(func);
   }
 
   return a.chain(f);

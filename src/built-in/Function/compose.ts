@@ -1,3 +1,3 @@
-export default function(this: Function, other: Function) {
-  return <T>(x: T) => other(this(x));
-}
+import { curry } from "../../methods";
+
+export default curry((a: Function, b: Function) => <T>(x: T) => a(b(x)));

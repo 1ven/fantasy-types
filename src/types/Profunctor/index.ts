@@ -17,7 +17,7 @@ export function promap<T, T1, T2>(
 ): Profunctor<T2>;
 
 export function promap(f, g, a) {
-  const apply = obj => obj.extended.prototype.promap.apply(a, [f, g]);
+  const apply = obj => obj.methods.promap(f, g, a);
 
   if (func.is(a)) {
     return apply(func);

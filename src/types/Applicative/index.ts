@@ -22,7 +22,7 @@ export function of<T>(A, a) {
   }
 
   if (func.isConstructor(A)) {
-    return apply(func);
+    return apply1(func);
   }
 
   return A.of(a);

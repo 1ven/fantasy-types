@@ -32,7 +32,7 @@ export function ap<T, T1>(a, b) {
   }
 
   if (func.is(b)) {
-    return apply(func);
+    return apply1(func);
   }
 
   return b.ap(a);

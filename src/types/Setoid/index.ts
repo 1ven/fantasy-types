@@ -37,7 +37,7 @@ export function equals(a, b) {
   }
 
   if (func.is(b)) {
-    return apply(func);
+    return apply1(func);
   }
 
   if (boolean.is(b)) {

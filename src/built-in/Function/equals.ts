@@ -1,3 +1,3 @@
-export default function(this: Function, other: Function) {
-  return this === other;
-}
+import { curry } from "../../methods";
+
+export default curry((a: Function, b: Function) => b === a);

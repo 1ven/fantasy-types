@@ -31,16 +31,14 @@ export const is = (val: any): val is Function => typeof val === "function";
 export const isConstructor = (Ctor: any): Ctor is FunctionConstructor =>
   Ctor === Function;
 
-export const extended = {
+export const methods = {
   id,
   of,
-  prototype: {
-    equals,
-    compose,
-    map,
-    promap,
-    ap,
-    chain,
-    contramap
-  }
+  equals,
+  compose,
+  map,
+  promap,
+  ap,
+  chain,
+  contramap
 };

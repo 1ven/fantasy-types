@@ -12,10 +12,10 @@ export function contramap<T, T1>(
 ): Contravariant<T1>;
 
 export function contramap(f, a) {
-  const apply = obj => obj.extended.prototype.contramap.apply(a, [f]);
+  const apply1 = obj => obj.methods.contramap(f, a);
 
   if (func.is(a)) {
-    return apply(func);
+    return apply1(func);
   }
 
   return a.contramap(f);
