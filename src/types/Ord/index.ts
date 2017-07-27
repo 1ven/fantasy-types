@@ -32,7 +32,7 @@ export function lte(a, b) {
   }
 
   if (boolean.is(b)) {
-    return apply(boolean);
+    return apply1(boolean);
   }
 
   if (date.is(b)) {

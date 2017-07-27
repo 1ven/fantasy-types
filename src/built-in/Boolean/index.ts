@@ -14,9 +14,7 @@ export const is = <T>(val: any): val is Boolean =>
 export const isConstructor = (Ctor: any): Ctor is BooleanConstructor =>
   Ctor === Boolean;
 
-export const extended = {
-  prototype: {
-    equals,
-    lte
-  }
+export const methods = {
+  equals,
+  lte
 };

@@ -1,7 +1,3 @@
-import { lte } from "../../types";
+import { curry } from "../../methods";
 
-export default function(other: Boolean) {
-  return typeof this === "object"
-    ? lte(other.valueOf(), this.valueOf())
-    : this === false || other === true;
-}
+export default curry((a: boolean, b: boolean) => b === false || a === true);
