@@ -1,8 +1,14 @@
 import { PlainObject } from "./";
-import { of, map, ap, concat } from "../../types";
-import { Applicative, ApplicativeConstructor } from "../../types";
+import {
+  Applicative,
+  ApplicativeConstructor,
+  of,
+  map,
+  ap,
+  concat
+} from "../../types";
 
-export default function traverse<T, T1>(
+export default function<T, T1>(
   this: PlainObject<T>,
   A: ApplicativeConstructor,
   f: (a: T) => Applicative<T1>

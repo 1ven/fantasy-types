@@ -1,3 +1,3 @@
-export default function empty(this: ObjectConstructor) {
+export default function(this: ObjectConstructor) {
   return {};
 }

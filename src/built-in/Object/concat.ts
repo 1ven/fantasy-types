@@ -1,6 +1,6 @@
 import { PlainObject } from "./";
 
-export default function concat<T>(other: PlainObject<T>) {
+export default function<T>(other: PlainObject<T>) {
   let result = {};
 
   for (let key in this) {

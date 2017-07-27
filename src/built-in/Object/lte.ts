@@ -1,8 +1,7 @@
 import { PlainObject } from "./";
-import * as Z from "sanctuary-type-classes";
-import * as F from "../../types";
+import { lte, equals } from "../../types";
 
-export default function lte<T>(other: PlainObject<T>) {
+export default function<T>(other: PlainObject<T>) {
   let thisKeys = Object.keys(this).sort();
   let otherKeys = Object.keys(other).sort();
 
@@ -26,8 +25,8 @@ export default function lte<T>(other: PlainObject<T>) {
       return false;
     }
 
-    if (!F.equals(other[k], this[k])) {
-      return F.lte(other[k], this[k]);
+    if (!equals(other[k], this[k])) {
+      return lte(other[k], this[k]);
     }
   }
 }

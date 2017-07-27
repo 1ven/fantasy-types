@@ -1,7 +1,7 @@
-import * as F from "../../types";
+import { Setoid, equals } from "../../types";
 import { PlainObject } from "./";
 
-export default function equals<T extends F.Setoid>(
+export default function<T extends Setoid>(
   this: PlainObject<T>,
   other: PlainObject<T>
 ) {
@@ -13,7 +13,7 @@ export default function equals<T extends F.Setoid>(
   const otherKeys = Object.keys(other).sort();
 
   return (
-    F.equals(thisKeys, otherKeys) &&
-    thisKeys.every((k: string) => F.equals(this[k], other[k]))
+    equals(otherKeys, thisKeys) &&
+    thisKeys.every((k: string) => equals(other[k], this[k]))
   );
 }

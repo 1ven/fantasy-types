@@ -1,6 +1,6 @@
 import { PlainObject } from "./";
 
-export default function ap<T, T1>(fns: PlainObject<(x: T) => T1>) {
+export default function<T, T1>(fns: PlainObject<(x: T) => T1>) {
   let result = {};
 
   for (let key in this) {
