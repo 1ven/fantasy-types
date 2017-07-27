@@ -10,7 +10,7 @@ import * as object from "../../built-in/Object";
 import { PlainObject } from "../../built-in/Object";
 
 export interface Setoid {
-  equals: <T extends Setoid>(this: typeof a, a: T) => boolean;
+  equals: (a: Setoid) => boolean;
 }
 
 export function equals<T, T1>(a: PlainObject<T>, b: PlainObject<T1>): boolean;
