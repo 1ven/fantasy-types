@@ -1,25 +1,25 @@
 import { laws } from "../../../types";
 
-test("conforms Setoid reflexivity", () => {
+test("obeys Setoid reflexivity", () => {
   laws.Setoid.reflexivity(true);
 });
 
-test("conforms Setoid symmetry", () => {
+test("obeys Setoid symmetry", () => {
   laws.Setoid.symmetry(true, false);
 });
 
-test("conforms Setoid transitivity", () => {
+test("obeys Setoid transitivity", () => {
   laws.Setoid.transitivity(true, true, true);
 });
 
-test("conforms Ord totality", () => {
+test("obeys Ord totality", () => {
   laws.Ord.totality(true, false);
 });
 
-test("conforms Ord antisymmetry", () => {
+test("obeys Ord antisymmetry", () => {
   laws.Ord.antisymmetry(true, true);
 });
 
-test("conforms Ord transitivity", () => {
+test("obeys Ord transitivity", () => {
   laws.Ord.transitivity(false, false, false);
 });

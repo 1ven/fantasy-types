@@ -1,13 +1,13 @@
 import { laws } from "../../../types";
 
-test("conforms Setoid reflexivity", () => {
+test("obeys Setoid reflexivity", () => {
   laws.Setoid.reflexivity(new RegExp("a"));
 });
 
-test("conforms Setoid symmetry", () => {
+test("obeys Setoid symmetry", () => {
   laws.Setoid.symmetry(new RegExp("a"), new RegExp("b"));
 });
 
-test("conforms Setoid transitivity", () => {
+test("obeys Setoid transitivity", () => {
   laws.Setoid.transitivity(new RegExp("a"), new RegExp("a"), new RegExp("a"));
 });

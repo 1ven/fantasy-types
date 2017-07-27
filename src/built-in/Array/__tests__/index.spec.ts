@@ -1,98 +1,98 @@
 import { laws } from "../../../types";
 
-test("conforms Setoid reflexivity", () => {
+test("obeys Setoid reflexivity", () => {
   laws.Setoid.reflexivity(["a"]);
 });
 
-test("conforms Setoid symmetry", () => {
+test("obeys Setoid symmetry", () => {
   laws.Setoid.symmetry(["a"], ["b"]);
 });
 
-test("conforms Setoid transitivity", () => {
+test("obeys Setoid transitivity", () => {
   laws.Setoid.transitivity(["a"], ["a"], ["a"]);
 });
 
-test("conforms Ord totality", () => {
+test("obeys Ord totality", () => {
   laws.Ord.totality(["a"], ["b"]);
 });
 
-test("conforms Ord antisymmetry", () => {
+test("obeys Ord antisymmetry", () => {
   laws.Ord.antisymmetry(["a"], ["a"]);
 });
 
-test("conforms Ord transitivity", () => {
+test("obeys Ord transitivity", () => {
   laws.Ord.transitivity([1], [2], [3]);
 });
 
-test("conforms Semigroup associativity", () => {
+test("obeys Semigroup associativity", () => {
   laws.Semigroup.associativity(["a"], ["b"], ["c"]);
 });
 
-test("conforms Monoid right identity", () => {
+test("obeys Monoid right identity", () => {
   laws.Monoid.rightIdentity(Array, ["m"]);
 });
 
-test("conforms Monoid left identity", () => {
+test("obeys Monoid left identity", () => {
   laws.Monoid.leftIdentity(Array, ["m"]);
 });
 
-test("conforms Functor identity", () => {
+test("obeys Functor identity", () => {
   laws.Functor.identity(["u"]);
 });
 
-test("conforms Functor composition", () => {
+test("obeys Functor composition", () => {
   laws.Functor.composition(["u"], x => x + "f", x => x + "g");
 });
 
-test("conforms Apply composition", () => {
+test("obeys Apply composition", () => {
   laws.Apply.composition(["v"], [x => x + "u"], [x => x + "a"]);
 });
 
-test("conforms Applicative identity", () => {
+test("obeys Applicative identity", () => {
   laws.Applicative.identity(Array, ["v"]);
 });
 
-test("conforms Applicative homomorphism", () => {
+test("obeys Applicative homomorphism", () => {
   laws.Applicative.homomorphism(Array, "x", x => x + "f");
 });
 
-test("conforms Applicative interchange", () => {
+test("obeys Applicative interchange", () => {
   laws.Applicative.interchange(Array, "y", [x => x + "u"]);
 });
 
-test("conforms Alt associativity", () => {
+test("obeys Alt associativity", () => {
   laws.Alt.associativity(["a"], ["b"], ["c"]);
 });
 
-test("conforms Alt distributivity", () => {
+test("obeys Alt distributivity", () => {
   laws.Alt.distributivity(["a"], ["b"], x => x + "f");
 });
 
-test("conforms Plus right identity", () => {
+test("obeys Plus right identity", () => {
   laws.Plus.rightIdentity(Array, ["x"]);
 });
 
-test("conforms Plus left identity", () => {
+test("obeys Plus left identity", () => {
   laws.Plus.leftIdentity(Array, ["x"]);
 });
 
-test("conforms Plus annihilation", () => {
+test("obeys Plus annihilation", () => {
   laws.Plus.annihilation(Array, x => x + "f");
 });
 
-test("conforms Alternative distributivity", () => {
+test("obeys Alternative distributivity", () => {
   laws.Alternative.distributivity(["x"], [x => x + "f"], [x => x + "f"]);
 });
 
-test("conforms Alternative annihilation", () => {
+test("obeys Alternative annihilation", () => {
   laws.Alternative.annihilation(Array, ["x"]);
 });
 
-test("conforms Foldable associativity", () => {
+test("obeys Foldable associativity", () => {
   laws.Foldable.associativity(["u"], (acc, x) => acc + x);
 });
 
-// test("conforms Traversable naturality", () => {
+// test("obeys Traversable naturality", () => {
 //   laws.Traversable.naturality(
 //     Array,
 //     Array,
@@ -101,33 +101,33 @@ test("conforms Foldable associativity", () => {
 //   );
 // });
 
-test("conforms Traversable naturality");
+test("obeys Traversable naturality");
 
-test("conforms Traversable identity", () => {
+test("obeys Traversable identity", () => {
   laws.Traversable.identity(Array, ["u"]);
 });
 
-test("conforms Traversable composition", () => {
+test("obeys Traversable composition", () => {
   laws.Traversable.composition(Array, Array, [[["u"]]]);
 });
 
-test("conforms Chain associativity", () => {
+test("obeys Chain associativity", () => {
   laws.Chain.associativity(["m"], x => [x + "f"], x => [x + "g"]);
 });
 
-test("conforms Monad left identity", () => {
+test("obeys Monad left identity", () => {
   laws.Monad.leftIdentity(Array, "a", x => [x + "f"]);
 });
 
-test("conforms Monad right identity", () => {
+test("obeys Monad right identity", () => {
   laws.Monad.rightIdentity(Array, ["m"]);
 });
 
-test("conforms Extend associativity", () => {
+test("obeys Extend associativity", () => {
   laws.Extend.associativity(["w"], x => ["g"], x => [["f"]]);
 });
 
-test("conforms ChainRec equivalence", () => {
+test("obeys ChainRec equivalence", () => {
   laws.ChainRec.equivalence(
     Array,
     (s: string) => s.length < 2,
