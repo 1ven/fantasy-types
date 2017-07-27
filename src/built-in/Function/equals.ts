@@ -1,5 +1,3 @@
-import * as F from "../../types";
-
-export default function equals(this: Function, other: Function) {
+export default function(this: Function, other: Function) {
   return this === other;
 }

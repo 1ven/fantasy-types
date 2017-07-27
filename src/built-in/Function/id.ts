@@ -1,5 +1,3 @@
-import * as F from "../../types";
-
-export default function id() {
+export default function() {
   return <T>(x: T) => x;
 }
