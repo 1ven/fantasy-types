@@ -1,6 +1,6 @@
 import curry from "../curry";
 
-it("should return curried function", () => {
+test("should return curried function", () => {
   const foo = curry((a, b, c) => a + b + c);
   const result = "abc";
 

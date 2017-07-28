@@ -1,14 +1,14 @@
 /**
  * Makes given function curried.
  * Returned function could accept various arguments.
+ * 
+ * @param fn Function to curry.
  *
  * @example
  * g(1, 2, 3) // 123
  * g(1)(2, 3) // 123
  * g(1, 2)(3) // 123
  * g(1)(2)(3) // 123
- * 
- * @param fn Function to curry.
  */
 export default function curry(fn: Function) {
   return (...args: any[]) =>
