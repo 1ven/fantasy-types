@@ -1,6 +1,6 @@
 import * as F from "../../types";
 import * as isPlainObject from "is-plain-object";
-import { Setoid, Applicative, ApplicativeConstructor } from "../../types";
+import { Ord, Setoid, Applicative, ApplicativeConstructor } from "../../types";
 
 import empty from "./empty";
 import concat from "./concat";

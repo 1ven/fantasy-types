@@ -1,5 +1,5 @@
 import * as F from "../../types";
-import { Setoid, Applicative, ApplicativeConstructor } from "../../types";
+import { Ord, Setoid, Applicative, ApplicativeConstructor } from "../../types";
 
 import chainRec from "./chainRec";
 import of from "./of";
