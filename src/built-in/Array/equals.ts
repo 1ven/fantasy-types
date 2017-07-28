@@ -1,7 +1,6 @@
-import { curry } from "../../methods";
 import { Setoid, equals } from "../../types";
 
-export default curry(<T extends Setoid>(a: T[], b: T[]) => {
+export default <T extends Setoid>(a: T[], b: T[]) => {
   if (b.length !== a.length) {
     return false;
   }
@@ -17,4 +16,4 @@ export default curry(<T extends Setoid>(a: T[], b: T[]) => {
   }
 
   return true;
-});
+};

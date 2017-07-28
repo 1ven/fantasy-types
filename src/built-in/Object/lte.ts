@@ -1,8 +1,7 @@
-import { curry } from "../../methods";
 import { Ord, lte, equals } from "../../types";
 import { PlainObject } from "./";
 
-export default curry(<T extends Ord>(a: PlainObject<T>, b: PlainObject<T>) => {
+export default <T extends Ord>(a: PlainObject<T>, b: PlainObject<T>) => {
   let aKeys = Object.keys(a).sort();
   let bKeys = Object.keys(b).sort();
 
@@ -30,4 +29,4 @@ export default curry(<T extends Ord>(a: PlainObject<T>, b: PlainObject<T>) => {
       return lte(a[k], b[k]);
     }
   }
-});
+};

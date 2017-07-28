@@ -1,5 +1,6 @@
 import * as array from "../../built-in/Array";
 import { Chain } from "../Chain";
+import { curry } from "../../methods";
 
 export interface ChainRec<T> extends Chain<T> {}
 
@@ -26,18 +27,48 @@ export interface ChainRecConstructor {
   ) => ChainRec<T3>;
 }
 
-export function chainRec<T1, T2, T3>(
-  C: ArrayConstructor,
-  f: ChainRecCb<T1, T2, T3, Array<T2 | T3>>,
-  i: T1
-): Array<T2 | T3>;
-export function chainRec<T1, T2, T3>(
-  C: ChainRecConstructor,
-  f: ChainRecCb<T1, T2, T3, ChainRec<T2 | T3>>,
-  i: T1
-): ChainRec<T2 | T3>;
+export type ChainRecFunction = {
+  /**
+   * Array
+   */
+  <T1, T2, T3>(
+    C: ArrayConstructor,
+    f: ChainRecCb<T1, T2, T3, Array<T2 | T3>>,
+    i: T1
+  ): Array<T2 | T3>;
+  <T1, T2, T3>(C: ArrayConstructor): (
+    f: ChainRecCb<T1, T2, T3, Array<T2 | T3>>,
+    i: T1
+  ) => Array<T2 | T3>;
+  <T1, T2, T3>(
+    C: ArrayConstructor,
+    f: ChainRecCb<T1, T2, T3, Array<T2 | T3>>
+  ): (i: T1) => Array<T2 | T3>;
+  <T1, T2, T3>(C: ArrayConstructor): (
+    f: ChainRecCb<T1, T2, T3, Array<T2 | T3>>
+  ) => (i: T1) => Array<T2 | T3>;
+  /**
+   * ChainRec
+   */
+  <T1, T2, T3>(
+    C: ChainRecConstructor,
+    f: ChainRecCb<T1, T2, T3, ChainRec<T2 | T3>>,
+    i: T1
+  ): ChainRec<T2 | T3>;
+  <T1, T2, T3>(C: ChainRecConstructor): (
+    f: ChainRecCb<T1, T2, T3, ChainRec<T2 | T3>>,
+    i: T1
+  ) => ChainRec<T2 | T3>;
+  <T1, T2, T3>(
+    C: ChainRecConstructor,
+    f: ChainRecCb<T1, T2, T3, ChainRec<T2 | T3>>
+  ): (i: T1) => ChainRec<T2 | T3>;
+  <T1, T2, T3>(C: ChainRecConstructor): (
+    f: ChainRecCb<T1, T2, T3, ChainRec<T2 | T3>>
+  ) => (i: T1) => ChainRec<T2 | T3>;
+};
 
-export function chainRec(C, f, i) {
+export const chainRec: ChainRecFunction = curry((C, f, i) => {
   const apply = obj => obj.methods.chainRec(f, i);
 
   if (array.isConstructor(C)) {
@@ -45,4 +76,4 @@ export function chainRec(C, f, i) {
   }
 
   return C.chainRec(f, i);
-}
+});

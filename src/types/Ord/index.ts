@@ -6,20 +6,51 @@ import * as string from "../../built-in/String";
 import * as object from "../../built-in/Object";
 import { PlainObject } from "../../built-in/Object";
 import { Setoid } from "../Setoid";
+import { curry } from "../../methods";
 
 export interface Ord extends Setoid {
   lte: (a: Ord) => boolean;
 }
 
-export function lte<T>(a: typeof b, b: PlainObject<T>): boolean;
-export function lte<T>(a: typeof b, b: Array<T>): boolean;
-export function lte(a: typeof b, b: Boolean): boolean;
-export function lte(a: typeof b, b: Date): boolean;
-export function lte(a: typeof b, b: Number): boolean;
-export function lte(a: typeof b, b: String): boolean;
-export function lte<T extends Ord>(a: typeof b, b: T): boolean;
+export type LteFunction = {
+  /**
+   * PlainObject
+   */
+  <T>(a: PlainObject<T>, b: PlainObject<T>): boolean;
+  <T>(a: PlainObject<T>): (b: PlainObject<T>) => boolean;
+  /**
+   * Array
+   */
+  <T>(a: Array<T>, b: Array<T>): boolean;
+  <T>(a: Array<T>): (b: Array<T>) => boolean;
+  /**
+   * Date
+   */
+  (a: Date, b: Date): boolean;
+  (a: Date): (b: Date) => boolean;
+  /**
+   * Boolean
+   */
+  (a: boolean, b: boolean): boolean;
+  (a: boolean): (b: boolean) => boolean;
+  /**
+   * Number
+   */
+  (a: number, b: number): boolean;
+  (a: number): (b: number) => boolean;
+  /**
+   * String
+   */
+  (a: string, b: string): boolean;
+  (a: string): (b: string) => boolean;
+  /**
+   * Ord
+   */
+  <T extends Ord>(a: T, b: typeof a): boolean;
+  <T extends Ord>(a: T): (b: typeof a) => boolean;
+};
 
-export function lte(a, b) {
+export const lte: LteFunction = curry((a, b) => {
   const apply = obj => obj.methods.lte(a, b);
 
   if (object.is(b)) {
@@ -47,4 +78,4 @@ export function lte(a, b) {
   }
 
   return b.lte(a);
-}
+});

@@ -8,23 +8,66 @@ import * as regexp from "../../built-in/RegExp";
 import * as string from "../../built-in/String";
 import * as object from "../../built-in/Object";
 import { PlainObject } from "../../built-in/Object";
+import { curry } from "../../methods";
 
 export interface Setoid {
   equals: (a: Setoid) => boolean;
 }
 
-export function equals<T, T1>(a: PlainObject<T>, b: PlainObject<T1>): boolean;
-export function equals<T>(a: typeof b, b: Array<T>): boolean;
-export function equals(a: typeof b, b: Function): boolean;
-export function equals(a: typeof b, b: Boolean): boolean;
-export function equals(a: typeof b, b: Date): boolean;
-export function equals(a: typeof b, b: Error): boolean;
-export function equals(a: typeof b, b: Number): boolean;
-export function equals(a: typeof b, b: RegExp): boolean;
-export function equals(a: typeof b, b: String): boolean;
-export function equals<T extends Setoid>(a: typeof b, b: T): boolean;
+export type EqualsFunction = {
+  /**
+   * PlainObject
+   */
+  <T>(a: PlainObject<T>, b: PlainObject<T>): boolean;
+  <T>(a: PlainObject<T>): (b: PlainObject<T>) => boolean;
+  /**
+   * Array
+   */
+  <T>(a: Array<T>, b: Array<T>): boolean;
+  <T>(a: Array<T>): (b: Array<T>) => boolean;
+  /**
+   * Function
+   */
+  (a: Function, b: Function): boolean;
+  (a: Function): (b: Function) => boolean;
+  /**
+   * Date
+   */
+  (a: Date, b: Date): boolean;
+  (a: Date): (b: Date) => boolean;
+  /**
+   * Error
+   */
+  (a: Error, b: Error): boolean;
+  (a: Error): (b: Error) => boolean;
+  /**
+   * RegExp
+   */
+  (a: RegExp, b: RegExp): boolean;
+  (a: RegExp): (b: RegExp) => boolean;
+  /**
+   * Boolean
+   */
+  (a: boolean, b: boolean): boolean;
+  (a: boolean): (b: boolean) => boolean;
+  /**
+   * Number
+   */
+  (a: number, b: number): boolean;
+  (a: number): (b: number) => boolean;
+  /**
+   * String
+   */
+  (a: string, b: string): boolean;
+  (a: string): (b: string) => boolean;
+  /**
+   * Setoid
+   */
+  <T extends Setoid>(a: T, b: typeof a): boolean;
+  <T extends Setoid>(a: T): (b: typeof a) => boolean;
+};
 
-export function equals(a, b) {
+export const equals: EqualsFunction = curry((a, b) => {
   const apply = obj => obj.methods.equals(a, b);
 
   if (object.is(b)) {
@@ -64,4 +107,4 @@ export function equals(a, b) {
   }
 
   return b.equals(a);
-}
+});

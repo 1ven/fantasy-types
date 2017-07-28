@@ -1,6 +1,4 @@
-import { curry } from "../../methods";
-
-export default curry(<T, T1>(fs: (x: T) => T1[], arr: T[]) => {
+export default <T, T1>(fs: (x: T) => T1[], arr: T[]) => {
   let result = [];
 
   for (let idx = 0; idx < fs.length; idx += 1) {
@@ -10,4 +8,4 @@ export default curry(<T, T1>(fs: (x: T) => T1[], arr: T[]) => {
   }
 
   return result;
-});
+};

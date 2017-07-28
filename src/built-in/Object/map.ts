@@ -1,7 +1,6 @@
-import { curry } from "../../methods";
 import { PlainObject } from "./";
 
-export default curry(<T, T1, T2>(f: (a: T) => T1, obj: PlainObject<T>) => {
+export default <T, T1, T2>(f: (a: T) => T1, obj: PlainObject<T>) => {
   let result = {};
 
   for (let key in obj) {
@@ -9,4 +8,4 @@ export default curry(<T, T1, T2>(f: (a: T) => T1, obj: PlainObject<T>) => {
   }
 
   return result;
-});
+};

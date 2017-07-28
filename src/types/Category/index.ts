@@ -7,10 +7,12 @@ export interface CategoryConstructor {
   id: () => Category;
 }
 
-export function id(A: FunctionConstructor): Function;
-export function id(A: CategoryConstructor): Category;
+export type IdFunction = {
+  (A: FunctionConstructor): Function;
+  (A: CategoryConstructor): Category;
+};
 
-export function id(A) {
+export const id: IdFunction = A => {
   const apply = obj => obj.methods.id();
 
   if (func.isConstructor(A)) {
@@ -18,4 +20,4 @@ export function id(A) {
   }
 
   return A.id();
-}
+};

@@ -11,12 +11,26 @@ export interface MonoidConstructor {
   empty: () => Monoid;
 }
 
-export function empty(M: ObjectConstructor): PlainObject<void>;
-export function empty(M: ArrayConstructor): Array<void>;
-export function empty(M: StringConstructor): String;
-export function empty(M: MonoidConstructor): Monoid;
+export type EmptyFunction = {
+  /**
+   * PlainObject
+   */
+  (M: ObjectConstructor): PlainObject<void>;
+  /**
+   * Array
+   */
+  (M: ArrayConstructor): Array<void>;
+  /**
+   * String
+   */
+  (M: StringConstructor): String;
+  /**
+   * Monoid
+   */
+  (M: MonoidConstructor): Monoid;
+};
 
-export function empty(M) {
+export const empty: EmptyFunction = M => {
   const apply = obj => obj.methods.empty();
 
   if (object.isConstructor(M)) {
@@ -32,4 +46,4 @@ export function empty(M) {
   }
 
   return M.empty();
-}
+};

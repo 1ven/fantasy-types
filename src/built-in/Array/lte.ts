@@ -1,7 +1,6 @@
-import { curry } from "../../methods";
 import { Ord, lte, equals } from "../../types";
 
-export default curry(<T extends Ord>(a: T[], b: T[]) => {
+export default <T extends Ord>(a: T[], b: T[]) => {
   let idx = 0;
   while (true) {
     if (idx === b.length) {
@@ -18,4 +17,4 @@ export default curry(<T extends Ord>(a: T[], b: T[]) => {
 
     idx += 1;
   }
-});
+};

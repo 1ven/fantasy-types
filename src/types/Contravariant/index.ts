@@ -1,17 +1,25 @@
 import * as func from "../../built-in/Function";
+import { curry } from "../../methods";
 
 // the opposite as Functor `.map`
 export interface Contravariant<T> {
   contramap: <T1>(fn: (a: T) => T1) => Contravariant<T>;
 }
 
-export function contramap<T, T1>(f: (x: T) => T1, a: Function): Function;
-export function contramap<T, T1>(
-  f: (x: T) => T1,
-  a: Contravariant<T>
-): Contravariant<T1>;
+export type ContramapFunction = {
+  /**
+   * Function
+   */
+  <T, T1>(f: (x: T) => T1, a: Function): Function;
+  <T, T1>(f: (x: T) => T1): (a: Function) => Function;
+  /**
+   * Contravariant
+   */
+  <T, T1>(f: (x: T) => T1, a: Contravariant<T>): Contravariant<T1>;
+  <T, T1>(f: (x: T) => T1): (a: Contravariant<T>) => Contravariant<T1>;
+};
 
-export function contramap(f, a) {
+export const contramap: ContramapFunction = curry((f, a) => {
   const apply = obj => obj.methods.contramap(f, a);
 
   if (func.is(a)) {
@@ -19,4 +27,4 @@ export function contramap(f, a) {
   }
 
   return a.contramap(f);
-}
+});

@@ -1,6 +1,7 @@
 import * as array from "../../built-in/Array";
 import * as func from "../../built-in/Function";
 import { Apply } from "../Apply";
+import { curry } from "../../methods";
 
 export interface Applicative<T> extends Apply<T> {}
 
@@ -9,11 +10,25 @@ export interface ApplicativeConstructor {
   of: <T1>(a: T1) => Applicative<T1>;
 }
 
-export function of<T>(A: ArrayConstructor, a: T): Array<T>;
-export function of<T>(A: FunctionConstructor, a: T): Function;
-export function of<T>(A: ApplicativeConstructor, a: T): Applicative<T>;
+export type OfFunction = {
+  /**
+   * Array
+   */
+  <T>(A: ArrayConstructor, a: T): Array<T>;
+  <T>(A: ArrayConstructor): (a: T) => Array<T>;
+  /**
+   * Function
+   */
+  <T>(A: FunctionConstructor, a: T): Function;
+  <T>(A: FunctionConstructor): (a: T) => Function;
+  /**
+   * Applicative
+   */
+  <T>(A: ApplicativeConstructor, a: T): Applicative<T>;
+  <T>(A: ApplicativeConstructor): (a: T) => Applicative<T>;
+};
 
-export function of<T>(A, a) {
+export const of: OfFunction = curry((A, a) => {
   const apply = obj => obj.methods.of(a);
 
   if (array.isConstructor(A)) {
@@ -25,4 +40,4 @@ export function of<T>(A, a) {
   }
 
   return A.of(a);
-}
+});

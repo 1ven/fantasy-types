@@ -10,11 +10,22 @@ export interface PlusConstructor {
   zero: () => Plus<void>;
 }
 
-export function zero(P: ObjectConstructor): PlainObject<void>;
-export function zero(P: ArrayConstructor): Array<void>;
-export function zero(P: PlusConstructor): Plus<void>;
+export type ZeroFunction = {
+  /**
+   * PlainObject
+   */
+  (P: ObjectConstructor): PlainObject<void>;
+  /**
+   * Array
+   */
+  (P: ArrayConstructor): Array<void>;
+  /**
+   * Plus
+   */
+  (P: PlusConstructor): Plus<void>;
+};
 
-export function zero(P) {
+export const zero: ZeroFunction = P => {
   const apply = obj => obj.methods.zero();
 
   if (object.isConstructor(P)) {
@@ -26,4 +37,4 @@ export function zero(P) {
   }
 
   return P.zero();
-}
+};

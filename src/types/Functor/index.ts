@@ -2,17 +2,41 @@ import * as object from "../../built-in/Object";
 import * as array from "../../built-in/Array";
 import * as func from "../../built-in/Function";
 import { PlainObject } from "../../built-in/Object";
+import { curry } from "../../methods";
 
 export interface Functor<T> {
   map: <T1>(fn: (a: T) => T1) => Functor<T1>;
 }
 
-export function map<T, T1>(f: (x: T) => T1, a: PlainObject<T>): PlainObject<T1>;
-export function map<T, T1>(f: (x: T) => T1, a: Array<T>): Array<T1>;
-export function map<T, T1>(f: (x: T) => T1, a: Function): Function;
-export function map<T, T1>(f: (x: T) => T1, a: Functor<T>): Functor<T1>;
+export type MapFunction = {
+  /**
+   * PlainObject
+   */
+  <T, T1>(f: (x: T) => T1, a: PlainObject<T>): PlainObject<T1>;
+  /**
+   * Array
+   */
+  <T, T1>(f: (x: T) => T1, a: Array<T>): Array<T1>;
+  /**
+   * Function
+   */
+  <T, T1>(f: (x: T) => T1, a: (...args) => T): (...args) => T1;
+  /**
+   * Functor
+   */
+  <T, T1>(f: (x: T) => T1, a: Functor<T>): Functor<T1>;
+  /**
+   * Partial application
+   */
+  <T, T1>(f: (x: T) => T1): {
+    (a: PlainObject<T>): PlainObject<T1>;
+    (a: Array<T>): Array<T1>;
+    (a: (...args) => T): (...args) => T1;
+    (a: Functor<T>): Functor<T1>;
+  };
+};
 
-export function map(f, a) {
+export const map: MapFunction = curry(function(f, a) {
   const apply = obj => obj.methods.map(f, a);
 
   if (object.is(a)) {
@@ -28,4 +52,4 @@ export function map(f, a) {
   }
 
   return a.map(f);
-}
+});
