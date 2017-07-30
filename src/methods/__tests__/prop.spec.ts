@@ -5,5 +5,5 @@ test("should return value of given object by key", () => {
 });
 
 test("should return undefined if key does not exist", () => {
-  expect(prop("age", { name: "John" })).toBeUndefined();
+  expect((prop as any)("age", { name: "John" })).toBeUndefined();
 });
