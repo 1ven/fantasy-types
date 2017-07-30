@@ -1,11 +1,9 @@
 import { PlainObject } from "../built-in/Object";
 import curry from "./curry";
 
-export type F = {
-  <T, O extends PlainObject<T>, K extends keyof O>(key: string, obj: O): O[K];
-  (key: string): <T, O extends PlainObject<T>, K extends keyof O>(
-    obj: O
-  ) => O[K];
+export type PropFunction = {
+  <O, K extends keyof O>(key: K, obj: O): O[K];
+  <K extends string>(key: K): <V, O extends Record<K, V>>(obj: O) => O[K];
 };
 
 /**
@@ -18,4 +16,4 @@ export type F = {
  * prop('name', { name: "John" }) // "John"
  * prop('age', { name: "John" }) // "undefined"
  */
-export default <F>curry((key, obj) => obj[key]);
+export default <PropFunction>curry((key, obj) => obj[key]);
