@@ -1,11 +1,11 @@
 import { reduce } from "../types";
 
-type Arity1<U0, T0> = (x0: U0) => T0;
-type Arity2<U0, U1, T0> = (x0: U0, x1: U1) => T0;
-type Arity3<U0, U1, U2, T0> = (x0: U0, x1: U1, x2: U2) => T0;
+export type Arity1<U0, T0> = (x0: U0) => T0;
+export type Arity2<U0, U1, T0> = (x0: U0, x1: U1) => T0;
+export type Arity3<U0, U1, U2, T0> = (x0: U0, x1: U1, x2: U2) => T0;
 
 // prettier-ignore
-type F = {
+export type FlowFunction = {
   <U0, T0>(f0: Arity1<U0, T0>): Arity1<U0, T0>;
   <U0, U1, T0>(f0: Arity2<U0, U1, T0>): Arity2<U0, U1, T0>;
   <U0, U1, U2, T0>(f0: Arity3<U0, U1, U2, T0>): Arity3<U0, U1, U2, T0>;
@@ -33,7 +33,7 @@ type F = {
  * 
  * @param fns Composing functions.
  */
-export default <F>function(...fns: Function[]) {
+export default <FlowFunction>function(...fns: Function[]) {
   return (...args) =>
     reduce(
       (arg, fn) => fn(arg),
