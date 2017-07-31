@@ -8,7 +8,7 @@ export interface Functor<T> {
   map: <T1>(fn: (a: T) => T1) => Functor<T1>;
 }
 
-export type MapFunction = {
+export interface MapFunction {
   /**
    * PlainObject
    */
@@ -34,7 +34,7 @@ export type MapFunction = {
     (a: (...args) => T): (...args) => T1;
     (a: Functor<T>): Functor<T1>;
   };
-};
+}
 
 export const map: MapFunction = curry(function(f, a) {
   const apply = obj => obj.methods.map(f, a);
